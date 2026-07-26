@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -10,6 +8,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import Heading from "./Heading";
+
 const GOOGLE_SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbytxJvz-K_Bjgu6h-M5AEz2_QVBpXqI-9zPfVa3XeU2hF6sUJYGrdWLmxfqO9eX7dxVYg/exec";
 
@@ -52,21 +51,6 @@ const sampleMessages: RSVPEntry[] = [
   },
 ];
 
-const reveal = {
-  hidden: { opacity: 0, y: 42, filter: "blur(7px)" },
-  visible: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.13, delayChildren: 0.08 } },
-};
-
 function Reveal({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   return (
     <motion.div
@@ -80,8 +64,6 @@ function Reveal({ children, className = "", delay = 0 }: { children: React.React
     </motion.div>
   );
 }
-
-
 
 function MessageCard({ entry, index }: { entry: RSVPEntry; index: number }) {
   return (

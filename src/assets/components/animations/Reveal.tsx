@@ -83,8 +83,6 @@ export default function Reveal({
     delay = 0,
     duration = 0.8,
     distance = 35,
-    once = true,
-    amount = 0.2,
     className = "",
 }: RevealProps) {
     const variants = createVariants(direction, distance);
