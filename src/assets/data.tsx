@@ -1,4 +1,6 @@
-type NavItem = { label: string; target: string };
+import { Home, Users, CalendarDays, ScrollText, Images, MessageCircleHeart, Gift } from "lucide-react";
+
+type NavItem = { label: string; target: string; icon: React.ComponentType<{ className?: string }> };
 type EventItem = { title: string; time: string; description: string };
 type StoryItem = { year: string; title: string; description: string };
 
@@ -6,13 +8,13 @@ const WEDDING = {
   groom: {
     firstName: "Faiz",
     fullName: "Faiz Fathur Rahman",
-    parents: "Faiz dari Bapak Safari dan Ibu Leli Zuhairiah",
+    parents: "Putra dari Bapak Safari Hamzah dan Ibu Leli Zuhairiah",
     origin: "Keluarga Kalimantan Barat",
   },
   bride: {
     firstName: "Fira",
     fullName: "Mutmagfira M",
-    parents: "Putri dari Bapak Maamun dan Ibu Maryam",
+    parents: "Putri dari Bapak Maamun Ali dan Ibu Haryati",
     origin: "Keluarga Sulawesi Barat",
   },
   isoDate: "2026-11-16T09:00:00+07:00",
@@ -37,24 +39,26 @@ const WEDDING = {
   giftAddress: "Jl. Yos Sudarso No. 19, Singkawang, Kalimantan Barat",
 };
 
+
 const NAV_ITEMS: NavItem[] = [
-  { label: "Beranda", target: "home" },
-  { label: "Mempelai", target: "couple" },
-  { label: "Acara", target: "events" },
-  { label: "Cerita", target: "story" },
-  { label: "Galeri", target: "gallery" },
-  { label: "RSVP", target: "rsvp" },
+  { label: "Beranda", target: "home", icon: Home },
+  { label: "Mempelai", target: "couple", icon: Users },
+  { label: "Acara", target: "events", icon: CalendarDays },
+  { label: "Cerita", target: "story", icon: ScrollText },
+  { label: "Galeri", target: "gallery", icon: Images },
+  { label: "Hadiah", target: "gift", icon: Gift },
+  { label: "RSVP", target: "rsvp", icon: MessageCircleHeart },
 ];
 
 const EVENTS: EventItem[] = [
   {
     title: "Akad Nikah",
-    time: "09.00–10.00 WIB",
+    time: "09.00 – 10.00 WITA",
     description: "Prosesi pernikahan dan doa bersama keluarga.",
   },
   {
     title: "Resepsi",
-    time: "11.00–14.00 WIB",
+    time: "11.00 WITA – Selesai",
     description: "Ramahi tamah dan jamuan bersama para tamu.",
   },
 ];

@@ -8,6 +8,7 @@ import Footer from "./assets/components/Footer";
 import StorySection from "./assets/components/StorySection";
 import './App.css';
 import GiftSection from "./assets/components/GiftSection";
+import FloatingNav from "./assets/components/FloatingNav";
 
 export default function App() {
   return (
@@ -19,10 +20,11 @@ export default function App() {
         <Events />
         <StorySection />
         <GallerySection />
-        <RSVPSection />
         <GiftSection />
+        <RSVPSection />
       </main>
       <Footer />
+      <FloatingNav />
     </div>
   );
 }

@@ -172,7 +172,7 @@ function RSVPAndMessagesSection() {
       <Heading
         eyebrow="Konfirmasi dan doa"
         title="RSVP & Ucapan"
-        description="Konfirmasi akan disimpan ke Google Sheets, lalu ucapan terbaru tampil dengan animasi lembut."
+        description="Mohon melakukan konfirmasi berikut, atas semua ucapan ucapannya kami ucapkan terimakasih."
       />
 
       <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr]">

@@ -16,7 +16,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-[#e8dfcf]/80 bg-[#fbf8f1]/90 backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-[#e8dfcf]/80 bg-[#fbf8f1]/90 backdrop-blur-md hidden lg:block">
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5" aria-label="Navigasi utama">
         <button onClick={() => navigate("home")} className="font-serif text-xl tracking-[0.18em] text-[#4f3d2d]">
           F <span className="text-[#a18459]">&</span> M
