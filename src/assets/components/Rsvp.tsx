@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import type { FormEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   CheckCircle2,
@@ -10,7 +11,7 @@ import {
 import Heading from "./Heading";
 
 const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbytxJvz-K_Bjgu6h-M5AEz2_QVBpXqI-9zPfVa3XeU2hF6sUJYGrdWLmxfqO9eX7dxVYg/exec";
+  "https://script.google.com/macros/s/AKfycbytxJvz-K_Bjgu6h-M5AEz2_QVBpXqI-9zPfVa3XeU2hF6sUJYGrdWLmxfqO9eX7dxVYg/exec";
 
 type Attendance = "Hadir" | "Tidak dapat hadir" | "Masih tentatif";
 
@@ -106,8 +107,13 @@ function RSVPAndMessagesSection() {
       .catch(() => undefined);
   }, []);
 
-  async function submit() {
+  async function submit(
+    event: FormEvent<HTMLFormElement>,
+  ): Promise<void> {
     event.preventDefault();
+
+    if (status === "saving") return;
+
     setStatus("saving");
 
     const newEntry: RSVPEntry = {
@@ -118,25 +124,45 @@ function RSVPAndMessagesSection() {
 
     try {
       if (!GOOGLE_SCRIPT_URL.startsWith("https://script.google.com/")) {
-        throw new Error("Google Apps Script URL has not been configured.");
+        throw new Error(
+          "Google Apps Script URL has not been configured.",
+        );
       }
 
-      // text/plain avoids an unnecessary browser CORS preflight with Apps Script.
       const response = await fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
         body: JSON.stringify(newEntry),
       });
 
-      const result = await response.json();
-      if (!response.ok || result.success !== true) throw new Error(result.message || "Could not save RSVP.");
+      if (!response.ok) {
+        throw new Error(
+          `Request failed with status ${response.status}`,
+        );
+      }
+
+      const result: {
+        success?: boolean;
+        message?: string;
+      } = await response.json();
+
+      if (result.success !== true) {
+        throw new Error(
+          result.message ?? "Could not save RSVP.",
+        );
+      }
 
       setMessages((current) => [newEntry, ...current]);
       setForm(initialForm);
       setStatus("success");
-      window.setTimeout(() => setStatus("idle"), 3500);
+
+      window.setTimeout(() => {
+        setStatus("idle");
+      }, 3500);
     } catch (error) {
-      console.error(error);
+      console.error("RSVP submission failed:", error);
       setStatus("error");
     }
   }
