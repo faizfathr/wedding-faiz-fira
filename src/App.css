@@ -2,3 +2,33 @@
 html {
   scroll-behavior: smooth;
 }
+
+@theme {
+  --color-theme-page: #faf2f2;
+  --color-theme-surface: #ffffff;
+  --color-theme-surface-elevated: #f3e1e1;
+
+  --color-theme-primary: #7d5a5a;
+  --color-theme-primary-hover: #6c4c4c;
+  --color-theme-primary-dark: #563b3b;
+  --color-theme-accent: #f1d1d1;
+
+  --color-theme-text: #563f3f;
+  --color-theme-text-muted: #8b6f6f;
+  --color-theme-border: #f1d1d1;
+
+  --color-theme-overlay: #3f2929;
+  --color-theme-glass-highlight: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--color-theme-page);
+  color: var(--color-theme-text);
+}

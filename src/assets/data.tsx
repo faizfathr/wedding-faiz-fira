@@ -87,4 +87,6 @@ const GALLERY = [
   { title: "Janji", caption: "Melangkah bersama", gradient: "from-[#c0a978] to-[#6d523b]" },
 ];
 
-export { WEDDING, NAV_ITEMS, EVENTS, STORIES, GALLERY };
+const EASE = [0.22, 1, 0.36, 1] as const;
+
+export { WEDDING, NAV_ITEMS, EVENTS, STORIES, GALLERY, EASE };

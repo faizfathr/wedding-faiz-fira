@@ -5,7 +5,11 @@ import { motion } from "framer-motion";
 
 export default function Countdown() {
   const calculateTime = () => {
-    const difference = Math.max(0, new Date(WEDDING.isoDate).getTime() - Date.now());
+    const difference = Math.max(
+      0,
+      new Date(WEDDING.isoDate).getTime() - Date.now(),
+    );
+
     return {
       Hari: Math.floor(difference / 86_400_000),
       Jam: Math.floor((difference / 3_600_000) % 24),
@@ -33,13 +37,13 @@ export default function Countdown() {
             y: -6,
             scale: 1.03,
           }}
-          className="h-full border border-[#d7c9b3] bg-[#fffdf8]/80 px-2 py-5 text-center"
+          className="h-full border border-theme-border bg-theme-surface/80 px-2 py-5 text-center"
         >
-          <strong className="block font-serif text-2xl font-normal text-[#503c2e] sm:text-4xl">
+          <strong className="block font-serif text-2xl font-normal text-theme-text sm:text-4xl">
             {String(value).padStart(2, "0")}
           </strong>
 
-          <span className="mt-1 block text-[9px] uppercase tracking-[0.16em] text-[#8c7658] sm:text-xs">
+          <span className="mt-1 block text-[9px] uppercase tracking-[0.16em] text-theme-text-muted sm:text-xs">
             {label}
           </span>
         </motion.div>

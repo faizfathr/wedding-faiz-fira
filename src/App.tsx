@@ -9,22 +9,30 @@ import StorySection from "./assets/components/StorySection";
 import './App.css';
 import GiftSection from "./assets/components/GiftSection";
 import FloatingNav from "./assets/components/FloatingNav";
+import WeddingLetterOpening from "./assets/components/Welcome";
 
 export default function App() {
   return (
-    <div className="min-h-screen scroll-smooth bg-[#fffdf8] font-sans text-[#43362d] selection:bg-[#c9b28d] selection:text-white">
-      <Navbar />
-      <main>
-        <Hero />
-        <Couple />
-        <Events />
-        <StorySection />
-        <GallerySection />
-        <GiftSection />
-        <RSVPSection />
-      </main>
-      <Footer />
-      <FloatingNav />
-    </div>
+    <WeddingLetterOpening
+      initials="F & M"
+      invitationTitle="Undangan Pernikahan"
+      openLabel="Buka undangan"
+    >
+      <div className="min-h-screen scroll-smooth bg-[#fffdf8] font-sans text-[#43362d] selection:bg-[#c9b28d] selection:text-white">
+
+        <Navbar />
+        <main>
+          <Hero />
+          <Couple />
+          <Events />
+          <StorySection />
+          <GallerySection />
+          <GiftSection />
+          <RSVPSection />
+        </main>
+        <Footer />
+        <FloatingNav />
+      </div>
+    </WeddingLetterOpening>
   );
 }
