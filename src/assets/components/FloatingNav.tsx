@@ -8,7 +8,7 @@ import {
   X,
 } from "lucide-react";
 import { NAV_ITEMS } from "../data";
-
+import { createPortal } from "react-dom";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -91,7 +91,7 @@ export default function FloatingNav() {
     setIsOpen(false);
   }
 
-  return (
+  return createPortal(
     <motion.div
       initial={{ opacity: 0, y: 30, scale: 0.94 }}
       animate={{
@@ -114,19 +114,34 @@ export default function FloatingNav() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed inset-0 -z-10 cursor-default bg-[#2f241d]/10 backdrop-blur-[2px]"
+                className="fixed inset-0 -z-10 cursor-default bg-theme-overlay/10 backdrop-blur-[2px]"
               />
 
               <motion.nav
                 aria-label="Navigasi undangan seluler"
-                initial={{ opacity: 0, y: 22, scale: 0.9, filter: "blur(10px)" }}
-                animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-                exit={{ opacity: 0, y: 18, scale: 0.94, filter: "blur(8px)" }}
+                initial={{
+                  opacity: 0,
+                  y: 22,
+                  scale: 0.9,
+                  filter: "blur(10px)",
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                  filter: "blur(0px)",
+                }}
+                exit={{
+                  opacity: 0,
+                  y: 18,
+                  scale: 0.94,
+                  filter: "blur(8px)",
+                }}
                 transition={{ duration: 0.42, ease: EASE }}
-                className="absolute bottom-[calc(100%+0.75rem)] left-1/2 w-[min(22rem,calc(100vw-2rem))] -translate-x-1/2 overflow-hidden rounded-[1.75rem] border border-white/60 bg-[#fffaf0]/70 p-3 shadow-[0_22px_65px_rgba(62,46,33,0.24)] backdrop-blur-2xl"
+                className="absolute bottom-[calc(100%+0.75rem)] left-1/2 w-[min(22rem,calc(100vw-2rem))] -translate-x-1/2 overflow-hidden rounded-[1.75rem] border border-theme-border/60 bg-theme-page/70 p-3 shadow-[0_22px_65px_rgba(125,90,90,0.24)] backdrop-blur-2xl"
               >
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/80 via-white/15 to-[#b99a6e]/20" />
-                <div className="pointer-events-none absolute -right-8 -top-10 h-28 w-28 rounded-full bg-white/50 blur-2xl" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-theme-surface/80 via-theme-surface/15 to-theme-accent/20" />
+                <div className="pointer-events-none absolute -right-8 -top-10 h-28 w-28 rounded-full bg-theme-surface/50 blur-2xl" />
 
                 <div className="relative grid grid-cols-4 gap-2">
                   {NAV_ITEMS.map((item, index) => {
@@ -147,18 +162,24 @@ export default function FloatingNav() {
                         }}
                         whileTap={{ scale: 0.91 }}
                         className={`group relative flex min-h-20 flex-col items-center justify-center gap-2 rounded-2xl border px-2 py-3 transition-colors duration-300 ${isActive
-                            ? "border-[#97744c]/30 bg-[#715339] text-white shadow-[0_8px_22px_rgba(80,57,38,0.22)]"
-                            : "border-white/50 bg-white/35 text-[#654e3b] hover:bg-white/70"
+                          ? "border-theme-primary/30 bg-theme-primary text-theme-page shadow-[0_8px_22px_rgba(125,90,90,0.22)]"
+                          : "border-theme-border/50 bg-theme-surface/35 text-theme-text hover:bg-theme-surface/70"
                           }`}
                       >
                         {isActive && (
                           <motion.span
                             layoutId="mobile-navigation-active"
-                            className="absolute inset-0 -z-10 rounded-2xl bg-gradient-to-br from-[#826343] to-[#4d392a]"
-                            transition={{ type: "spring", stiffness: 320, damping: 28 }}
+                            className="absolute inset-0 -z-10 rounded-2xl bg-gradient-to-br from-theme-primary to-theme-primary-dark"
+                            transition={{
+                              type: "spring",
+                              stiffness: 320,
+                              damping: 28,
+                            }}
                           />
                         )}
+
                         <Icon />
+
                         <span className="text-[9px] font-medium uppercase tracking-[0.11em]">
                           {item.label}
                         </span>
@@ -167,7 +188,7 @@ export default function FloatingNav() {
                   })}
                 </div>
 
-                <div className="relative mx-auto mt-3 flex items-center justify-center gap-2 text-[#8a7155]">
+                <div className="relative mx-auto mt-3 flex items-center justify-center gap-2 text-theme-primary">
                   <span className="h-px w-12 bg-current opacity-30" />
                   <Heart size={11} className="fill-current" />
                   <span className="h-px w-12 bg-current opacity-30" />
@@ -177,8 +198,8 @@ export default function FloatingNav() {
           )}
         </AnimatePresence>
 
-        <div className="relative flex items-center gap-1.5 rounded-full border border-white/70 bg-[#fffaf0]/65 p-1.5 shadow-[0_14px_45px_rgba(61,45,32,0.24)] backdrop-blur-2xl">
-          <div className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-br from-white/80 via-white/10 to-[#b9986b]/20" />
+        <div className="relative flex items-center gap-1.5 rounded-full border border-theme-border/70 bg-theme-page/65 p-1.5 shadow-[0_14px_45px_rgba(125,90,90,0.24)] backdrop-blur-2xl">
+          <div className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-br from-theme-surface/80 via-theme-surface/10 to-theme-accent/20" />
 
           <motion.button
             type="button"
@@ -186,8 +207,8 @@ export default function FloatingNav() {
             onClick={() => navigateTo("home")}
             whileTap={{ scale: 0.9 }}
             className={`relative flex h-12 w-12 items-center justify-center rounded-full border transition-colors duration-300 ${activeSection === "home"
-                ? "border-[#7a5b3d]/30 bg-[#604630] text-white"
-                : "border-white/70 bg-white/45 text-[#654d39]"
+              ? "border-theme-primary/30 bg-theme-primary text-theme-page"
+              : "border-theme-border/70 bg-theme-surface/45 text-theme-text"
               }`}
           >
             <Home size={19} strokeWidth={1.6} />
@@ -199,7 +220,7 @@ export default function FloatingNav() {
             aria-label={isOpen ? "Tutup menu" : "Buka menu undangan"}
             onClick={() => setIsOpen((current) => !current)}
             whileTap={{ scale: 0.94 }}
-            className="relative flex h-12 items-center gap-2 rounded-full border border-white/70 bg-white/45 px-4 text-[#5e4735] transition hover:bg-white/70"
+            className="relative flex h-12 items-center gap-2 rounded-full border border-theme-border/70 bg-theme-surface/45 px-4 text-theme-text transition hover:bg-theme-surface/70"
           >
             <AnimatePresence mode="wait" initial={false}>
               <motion.span
@@ -212,12 +233,14 @@ export default function FloatingNav() {
                 {isOpen ? <X size={18} /> : <Menu size={18} />}
               </motion.span>
             </AnimatePresence>
+
             <span className="text-[10px] font-semibold uppercase tracking-[0.18em]">
               Menu
             </span>
           </motion.button>
         </div>
       </div>
-    </motion.div>
+    </motion.div>,
+    document.body,
   );
 }

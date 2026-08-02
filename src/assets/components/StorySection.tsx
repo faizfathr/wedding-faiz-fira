@@ -5,7 +5,7 @@ import Reveal from "./animations/Reveal";
 
 export default function StorySection() {
   return (
-    <section id="story" className="bg-[#fffdf8] px-5 py-24">
+    <section id="story" className="bg-theme-surface px-5 py-24">
       <Heading eyebrow="Perjalanan kami" title="Cerita Cinta" />
       <div className="mx-auto max-w-3xl">
         {STORIES.map((story, index) => (
@@ -15,7 +15,7 @@ export default function StorySection() {
             delay={index * 0.08}
             duration={0.85}
           >
-            <article className="grid grid-cols-[64px_1fr] gap-5 border-l border-[#c4b293] pb-12 pl-7 last:pb-0">
+            <article className="grid grid-cols-[64px_1fr] gap-5 border-l border-theme-border pb-12 pl-7 last:pb-0">
               <motion.div
                 whileHover={{
                   scale: 1.1,
@@ -26,17 +26,17 @@ export default function StorySection() {
                   stiffness: 280,
                   damping: 18,
                 }}
-                className="-ml-[36px] flex h-16 w-16 items-center justify-center rounded-full border border-[#b29b77] bg-[#f2eadc] font-serif text-[#6a5338]"
+                className="-ml-9 flex h-16 w-16 items-center justify-center rounded-full border border-theme-border bg-theme-surface-elevated font-serif text-theme-primary"
               >
                 {story.year}
               </motion.div>
 
               <div className="pt-2">
-                <h3 className="font-serif text-2xl text-[#4b392c]">
+                <h3 className="font-serif text-2xl text-theme-text">
                   {story.title}
                 </h3>
 
-                <p className="mt-2 leading-7 text-[#74685e]">
+                <p className="mt-2 leading-7 text-theme-text-muted">
                   {story.description}
                 </p>
               </div>

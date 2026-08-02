@@ -30,8 +30,8 @@ export default function App() {
           <GiftSection />
           <RSVPSection />
         </main>
-        <Footer />
         <FloatingNav />
+        <Footer />
       </div>
     </WeddingLetterOpening>
   );

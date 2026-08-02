@@ -14,7 +14,7 @@ const WEDDING = {
   bride: {
     firstName: "Fira",
     fullName: "Mutmagfira M",
-    parents: "Putri dari Bapak Maamun Ali dan Ibu Haryati",
+    parents: "Putri dari Bapak Ma'amun Ali dan Ibu Hasnawati",
     origin: "Keluarga Sulawesi Barat",
   },
   isoDate: "2026-11-16T09:00:00+07:00",
