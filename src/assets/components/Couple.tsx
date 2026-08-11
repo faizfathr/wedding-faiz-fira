@@ -26,8 +26,8 @@ export default function Couple() {
             name={WEDDING.groom.fullName}
             parents={WEDDING.groom.parents}
             origin={WEDDING.groom.origin}
-          // photoUrl="/images/groom.jpg"
-          // photoAlt={`Foto ${WEDDING.groom.fullName}`}
+            photoUrl={WEDDING.groom.photo}
+            photoAlt={`Foto ${WEDDING.groom.fullName}`}
           />
         </Reveal>
 
@@ -41,7 +41,7 @@ export default function Couple() {
 
         <Reveal direction="left" duration={0.9}>
           <PersonCard
-            initials="N"
+            initials="M"
             name={WEDDING.bride.fullName}
             parents={WEDDING.bride.parents}
             origin={WEDDING.bride.origin}

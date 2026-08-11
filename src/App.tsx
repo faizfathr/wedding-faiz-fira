@@ -13,11 +13,11 @@ import WeddingLetterOpening from "./assets/components/Welcome";
 
 export default function App() {
   return (
-    <WeddingLetterOpening
-      initials="F & M"
-      invitationTitle="Undangan Pernikahan"
-      openLabel="Buka undangan"
-    >
+    // <WeddingLetterOpening
+    //   initials="F & M"
+    //   invitationTitle="Undangan Pernikahan"
+    //   openLabel="Buka undangan"
+    // >
       <div className="min-h-screen scroll-smooth bg-[#fffdf8] font-sans text-[#43362d] selection:bg-[#c9b28d] selection:text-white">
 
         <Navbar />
@@ -33,6 +33,6 @@ export default function App() {
         <FloatingNav />
         <Footer />
       </div>
-    </WeddingLetterOpening>
+    // </WeddingLetterOpening>
   );
 }

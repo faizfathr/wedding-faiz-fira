@@ -14,21 +14,21 @@ export default function PersonCard({
   name,
   parents,
   origin,
-  // photoUrl = undefined,
-  // photoAlt = "Foto orang yang diundang",
+  photoUrl = undefined,
+  photoAlt = "Foto orang yang diundang",
 }: PersonCardProps) {
   return (
     <motion.article whileHover={{ y: -5 }} className="text-center">
       <div className="mx-auto mb-6 h-44 w-44 overflow-hidden rounded-full border border-theme-border bg-theme-surface-elevated shadow-[0_12px_35px_rgba(125,90,90,0.12)]">
-        {/* {photoUrl ? (
-          {photoUrl}
-        ) : ( */}
-        <div className="flex h-full w-full items-center justify-center">
-          <span className="font-serif text-6xl text-theme-primary">
-            {initials}
-          </span>
-        </div>
-        {/* )} */}
+        {photoUrl ? (
+          <img src={photoUrl} alt={photoAlt} className="h-full w-full object-cover" />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center">
+            <span className="font-serif text-6xl text-theme-primary">
+              {initials}
+            </span>
+          </div>
+        )}  
       </div>
 
       <h3 className="font-serif text-3xl text-theme-text">
