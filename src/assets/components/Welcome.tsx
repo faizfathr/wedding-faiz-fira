@@ -1,8 +1,9 @@
+
+
 import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Heart, MailOpen, Sparkles } from "lucide-react";
-
+import { Heart } from "lucide-react";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 type WeddingLetterOpeningProps = {
@@ -13,9 +14,9 @@ type WeddingLetterOpeningProps = {
 };
 
 export default function WeddingLetterOpening({
-  initials = "A & N",
+  initials = "F & M",
   invitationTitle = "Undangan Pernikahan",
-  openLabel = "Buka undangan",
+  openLabel = "Geser atau klik untuk membuka",
   children,
 }: WeddingLetterOpeningProps) {
   const [isOpened, setIsOpened] = useState(false);
@@ -34,7 +35,7 @@ export default function WeddingLetterOpening({
     if (isOpened) return;
 
     setIsOpened(true);
-    window.setTimeout(() => setShowInvitation(true), 1450);
+    window.setTimeout(() => setShowInvitation(true), 1450);
   }
 
   return (
@@ -45,204 +46,207 @@ export default function WeddingLetterOpening({
             key="letter-cover"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0, scale: 1.04, filter: "blur(8px)" }}
-            transition={{ duration: 0.7, ease: EASE }}
+            exit={{ opacity: 0, scale: 1.03, filter: "blur(8px)" }}
+            transition={{ duration: 0.65, ease: EASE }}
             className="relative flex min-h-svh items-center justify-center overflow-hidden px-5 py-12"
           >
-            <BackgroundDecorations />
+            <AmbientBackground />
 
             <motion.div
-              initial={{ opacity: 0, y: 36, scale: 0.94 }}
+              initial={{ opacity: 0, y: 30, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.9, ease: EASE }}
-              className="relative z-10 w-full max-w-xl text-center"
+              className="relative z-10 w-full max-w-lg text-center"
             >
-              <motion.div
-                animate={{ y: [0, -5, 0] }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="mb-7"
+              <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-theme-text-muted">
+                {invitationTitle}
+              </p>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.75, delay: 0.15, ease: EASE }}
+                className="mb-8 font-serif text-4xl italic tracking-wide text-theme-primary sm:text-5xl"
               >
-                <span className="inline-flex items-center gap-2 rounded-full border border-theme-border/80 bg-theme-surface/75 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-theme-primary shadow-sm backdrop-blur-xl">
-                  <Sparkles size={13} />
-                  {invitationTitle}
-                </span>
-              </motion.div>
+                {initials}
+              </motion.h1>
 
-              <div className="relative mx-auto aspect-1.5/1 w-full max-w-112.5 perspective:1400px">
-                {/* Simple envelope base */}
+              <div className="relative mx-auto aspect-[1.48/1] w-full max-w-107.5 perspective-[1400px]">
+                <FloralCluster position="left" />
+                <FloralCluster position="right" />
+
+                {/* Envelope base: only theme-primary and theme-accent. */}
                 <motion.div
-                  animate={
-                    isOpened
-                      ? { y: 14, scale: 0.97 }
-                      : { y: 0, scale: 1 }
-                  }
-                  transition={{ duration: 0.75, ease: EASE }}
-                  className="absolute inset-x-[5%] bottom-[7%] top-[10%] z-0 overflow-hidden rounded-[1.25rem] border border-theme-border bg-theme-surface-elevated shadow-[0_24px_65px_rgba(125,90,90,0.18)]"
-                >
-                  <div className="absolute inset-0 bg-linear-to-b from-theme-surface to-theme-surface-elevated" />
-                </motion.div>
-
-                {/* Opening flap */}
+                  animate={isOpened ? { y: 14, scale: 0.97 } : { y: 0, scale: 1 }}
+                  transition={{ duration: 0.7, ease: EASE }}
+                  className="absolute inset-x-[7%] bottom-[8%] top-[8%] z-0 overflow-hidden rounded-sm border border-theme-primary/20 bg-theme-primary shadow-[0_18px_45px_rgba(125,90,90,0.2)]"
+                />
+                {/* The letter pops out only after the flap finishes opening. */}
                 <motion.div
                   initial={false}
                   animate={
                     isOpened
                       ? {
-                          rotateX: -180,
+                          y: -82,
+                          opacity: 1,
+                          scale: 1,
+                        }
+                      : {
+                          y: 90,
+                          opacity: 0,
+                          scale: 0.88,
+                        }
+                  }
+                  transition={
+                    isOpened
+                      ? {
+                          type: "spring",
+                          stiffness: 190,
+                          damping: 18,
+                          mass: 0.9,
+                          delay: 0.78,
+                        }
+                      : {
+                          duration: 0.3,
+                          ease: EASE,
+                        }
+                  }
+                  className="absolute inset-x-[17%] bottom-[13%] z-20 h-[70%] border border-theme-primary/20 bg-theme-accent px-5 py-6 shadow-[0_12px_32px_rgba(125,90,90,0.14)]"
+                >
+                  <motion.div
+                    animate={
+                      isOpened
+                        ? { scale: [0.96, 1.035, 1] }
+                        : { scale: 1 }
+                    }
+                    transition={{
+                      duration: 0.5,
+                      delay: isOpened ? 1.02 : 0,
+                      ease: EASE,
+                    }}
+                    className="flex h-full items-center justify-center border border-theme-primary/25"
+                  >
+                    <p className="font-serif text-4xl tracking-widest text-theme-primary sm:text-5xl">
+                      {initials}
+                    </p>
+                  </motion.div>
+                </motion.div>
+
+                {/* The top flap flips upward first. */}
+                <motion.div
+                  initial={false}
+                  animate={
+                    isOpened
+                      ? {
+                          rotateX: -180,
+                          y: -5,
                           opacity: 0,
                           transitionEnd: { display: "none" },
                         }
-                      : {
-                          rotateX: 0,
-                          opacity: 1,
-                          display: "block",
-                        }
+                      : {
+                          rotateX: 0,
+                          y: 0,
+                          opacity: 1,
+                          display: "block",
+                        }
                   }
                   transition={{
-                    rotateX: { duration: 0.72, ease: EASE },
-                    opacity: {
-                      duration: 0.2,
-                      delay: isOpened ? 0.5 : 0,
-                    },
+                    rotateX: {
+                      duration: 0.72,
+                      ease: EASE,
+                    },
+                    y: {
+                      duration: 0.72,
+                      ease: EASE,
+                    },
+                    opacity: {
+                      duration: 0.12,
+                      delay: isOpened ? 0.62 : 0,
+                    },
                   }}
                   style={{
                     transformOrigin: "top center",
                     transformStyle: "preserve-3d",
                     backfaceVisibility: "hidden",
                     WebkitBackfaceVisibility: "hidden",
+                    willChange: "transform, opacity",
                   }}
-                  className={`absolute inset-x-[5%] top-[10%] h-[47%] rounded-t-[1.25rem] bg-theme-accent [clip-path:polygon(0_0,100%_0,50%_100%)] ${
+                  className={`absolute inset-x-[7%] top-[8%] h-[55%] bg-theme-primary [clip-path:polygon(0_0,100%_0,50%_100%)] ${
                     isOpened ? "z-0" : "z-30"
                   }`}
-                />
-
-                {/* Letter */}
-                <motion.div
-                  initial={false}
-                  animate={
-                    isOpened
-                      ? { y: -78, scale: 1, opacity: 1 }
-                      : { y: 30, scale: 0.92, opacity: 0.78 }
-                  }
-                  transition={{
-                    duration: 0.92,
-                    delay: isOpened ? 0.46 : 0,
-                    ease: EASE,
-                  }}
-                  className="absolute inset-x-[14%] bottom-[14%] z-20 h-[72%] rounded-xl border border-theme-border bg-theme-surface px-6 py-7 shadow-[0_16px_45px_rgba(125,90,90,0.14)]"
                 >
-                  <div className="absolute inset-2 rounded-lg border border-theme-primary/15" />
+                  <div className="absolute inset-0 bg-theme-primary" />
+                  <div className="absolute inset-x-[12%] top-[14%] h-px bg-theme-accent/25" />
+                </motion.div>
 
-                  <div className="relative flex h-full flex-col items-center justify-center">
-                    <p className="text-[9px] font-semibold uppercase tracking-[0.26em] text-theme-text-muted">
-                      Dengan hangat mengundang
-                    </p>
 
-                    <Heart
-                      className="my-4 fill-theme-accent text-theme-primary"
-                      size={20}
-                      strokeWidth={1.3}
-                    />
-
-                    <p className="font-serif text-5xl tracking-[0.08em] text-theme-primary sm:text-6xl">
-                      {initials}
-                    </p>
-
-                    <div className="mt-5 flex items-center gap-2 text-theme-primary/55">
-                      <span className="h-px w-9 bg-current" />
-                      <span className="h-1.5 w-1.5 rotate-45 bg-current" />
-                      <span className="h-px w-9 bg-current" />
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/*
-                  Simplified front pocket:
-                  one clean classic shape instead of three overlapping layers.
-                */}
+                {/* Light front pocket. */}
                 <motion.div
-                  animate={
-                    isOpened
-                      ? { y: 14, scale: 0.97 }
-                      : { y: 0, scale: 1 }
-                  }
-                  transition={{ duration: 0.75, ease: EASE }}
-                  className="pointer-events-none absolute inset-x-[5%] bottom-[7%] z-20 h-[54%] overflow-hidden rounded-b-[1.25rem] border-x border-b border-theme-border bg-theme-surface-elevated [clip-path:polygon(0_0,50%_58%,100%_0,100%_100%,0_100%)]"
+                  animate={isOpened ? { y: 14, scale: 0.97 } : { y: 0, scale: 1 }}
+                  transition={{ duration: 0.7, ease: EASE }}
+                  className="pointer-events-none absolute inset-x-[7%] bottom-[8%] z-20 h-[62%] overflow-hidden rounded-b-sm border-x border-b border-theme-primary/20 bg-theme-accent [clip-path:polygon(0_0,50%_48%,100%_0,100%_100%,0_100%)]"
                   aria-hidden="true"
-                >
-                  <div className="absolute inset-0 bg-linear-to-b from-theme-accent/55 to-theme-surface-elevated" />
-                  <div className="absolute inset-x-[14%] bottom-4 h-px bg-theme-primary/12" />
-                </motion.div>
-
+                />
                 <AnimatePresence>
                   {!isOpened && (
                     <motion.button
                       type="button"
                       onClick={openInvitation}
-                      initial={{ opacity: 0, scale: 0.7 }}
+                      initial={{ opacity: 0, scale: 0.68 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.65 }}
-                      transition={{
-                        duration: 0.45,
-                        delay: 0.45,
-                        ease: EASE,
-                      }}
-                      whileHover={{ scale: 1.06 }}
+                      exit={{ opacity: 0, scale: 0.7 }}
+                      transition={{ duration: 0.45, delay: 0.4, ease: EASE }}
+                      whileHover={{ scale: 1.07 }}
                       whileTap={{ scale: 0.92 }}
-                      className="absolute left-1/2 top-[51%] z-40 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-4 border-theme-surface bg-theme-primary text-white shadow-[0_10px_28px_rgba(125,90,90,0.3)]"
-                      aria-label={openLabel}
+                      className="absolute left-1/2 top-[52%] z-40 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-[3px] border-theme-accent bg-theme-primary text-theme-accent shadow-[0_8px_24px_rgba(125,90,90,0.3)]"
+                      aria-label="Buka undangan"
                     >
-                      <span className="absolute inset-1 rounded-full border border-theme-surface/25" />
-                      <Heart
-                        size={21}
-                        className="fill-white"
-                        strokeWidth={1.2}
-                      />
+                      <span className="absolute inset-1 rounded-full border border-theme-accent/30" />
+                      <Heart size={20} className="fill-current" strokeWidth={1.2} />
                     </motion.button>
                   )}
                 </AnimatePresence>
               </div>
 
               <AnimatePresence>
-                {!isOpened && (
+                {!isOpened ? (
                   <motion.button
+                    key="open-control"
                     type="button"
                     onClick={openInvitation}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 8 }}
-                    transition={{
-                      duration: 0.6,
-                      delay: 0.75,
-                      ease: EASE,
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 80 }}
+                    dragElastic={0.15}
+                    onDragEnd={(_, info) => {
+                      if (info.offset.x > 45) openInvitation();
                     }}
-                    whileHover={{ y: -2 }}
-                    whileTap={{ scale: 0.96 }}
-                    className="group mt-7 inline-flex items-center gap-3 border-b border-theme-primary/35 px-2 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-theme-primary transition hover:border-theme-primary"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 6 }}
+                    transition={{ duration: 0.55, delay: 0.7, ease: EASE }}
+                    whileHover={{ x: 3 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="mt-5 inline-flex cursor-grab items-center gap-3 border-b border-theme-primary/30 px-2 py-2 font-serif text-sm italic tracking-wide text-theme-text-muted active:cursor-grabbing"
                   >
-                    <MailOpen
-                      size={16}
-                      className="transition-transform group-hover:-rotate-6"
-                    />
-                    {openLabel}
+                    <span>{openLabel}</span>
+                    <motion.span
+                      animate={{ x: [0, 5, 0] }}
+                      transition={{ duration: 1.7, repeat: Infinity, ease: "easeInOut" }}
+                      className="text-theme-primary"
+                    >
+                      →
+                    </motion.span>
                   </motion.button>
-                )}
-              </AnimatePresence>
-
-              <AnimatePresence>
-                {isOpened && (
+                ) : (
                   <motion.p
+                    key="opening-message"
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
-                    transition={{ delay: 0.62, duration: 0.45 }}
-                    className="mt-6 text-sm italic text-theme-text-muted"
+                    transition={{ delay: 0.55, duration: 0.4 }}
+                    className="mt-5 font-serif text-sm italic text-theme-text-muted"
                   >
-                    Sebuah undangan hangat sedang dibuka…
+                    Membuka undangan…
                   </motion.p>
                 )}
               </AnimatePresence>
@@ -251,9 +255,9 @@ export default function WeddingLetterOpening({
         ) : (
           <motion.div
             key="invitation-content"
-            initial={{ opacity: 0, y: 34, filter: "blur(10px)" }}
+            initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.9, ease: EASE }}
+            transition={{ duration: 0.85, ease: EASE }}
           >
             {children}
           </motion.div>
@@ -263,60 +267,115 @@ export default function WeddingLetterOpening({
   );
 }
 
-function BackgroundDecorations() {
-  const hearts = [
-    { position: "left-[12%] top-[18%]", delay: 0 },
-    { position: "right-[14%] top-[24%]", delay: 0.8 },
-    { position: "left-[18%] bottom-[16%]", delay: 1.5 },
-    { position: "right-[20%] bottom-[18%]", delay: 2.1 },
-  ];
+function FloralCluster({ position }: { position: "left" | "right" }) {
+  const isLeft = position === "left";
 
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.82, rotate: isLeft ? -6 : 6 }}
+      animate={{
+        opacity: 1,
+        scale: 1,
+        rotate: isLeft ? [-4, -1, -4] : [4, 1, 4],
+        y: [0, -4, 0],
+      }}
+      transition={{
+        opacity: { duration: 0.6, delay: 0.25 },
+        scale: { duration: 0.6, delay: 0.25 },
+        rotate: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+        y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+      }}
+      className={`pointer-events-none absolute z-40 h-32 w-28 ${
+        isLeft ? "-left-2 -top-3" : "-right-2 -bottom-5 rotate-180"
+      }`}
+      aria-hidden="true"
+    >
+      {/* Rounded hydrangea-like flower cluster inspired by the reference. */}
+      <div className="absolute left-3 top-1 h-20 w-20">
+        {[
+          [28, 4, 15],
+          [10, 18, 17],
+          [45, 18, 18],
+          [25, 27, 19],
+          [5, 40, 15],
+          [47, 42, 16],
+          [25, 51, 18],
+        ].map(([left, top, size], index) => (
+          <motion.span
+            key={index}
+            animate={{ scale: [1, 1.06, 1] }}
+            transition={{
+              duration: 3 + index * 0.18,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            style={{ left, top, width: size, height: size }}
+            className="absolute rounded-full border border-theme-primary/15 bg-theme-accent shadow-[inset_0_0_0_3px_rgba(255,255,255,0.18)]"
+          />
+        ))}
+      </div>
+
+      {/* Two simple pink blossoms. */}
+      <div className="absolute right-0 top-5 h-10 w-10">
+        {[0, 72, 144, 216, 288].map((rotation) => (
+          <span
+            key={rotation}
+            style={{ transform: `rotate(${rotation}deg) translateY(-8px)` }}
+            className="absolute left-3 top-3 h-5 w-3 origin-bottom rounded-full bg-theme-primary/65"
+          />
+        ))}
+        <span className="absolute left-3.5 top-3.5 h-3 w-3 rounded-full bg-theme-accent" />
+      </div>
+
+
+      <div className="absolute right-3 top-14 h-8 w-8 scale-75">
+        {[0, 72, 144, 216, 288].map((rotation) => (
+          <span
+            key={rotation}
+            style={{ transform: `rotate(${rotation}deg) translateY(-6px)` }}
+            className="absolute left-2.5 top-2.5 h-4 w-2.5 origin-bottom rounded-full bg-theme-primary/55"
+          />
+        ))}
+        <span className="absolute left-3 top-3 h-2 w-2 rounded-full bg-theme-accent" />
+      </div>
+
+
+      {/* Hanging floral strands similar to the cascading flowers in the photo. */}
+      <div className="absolute left-8 top-17 flex gap-2">
+        {[58, 78, 48].map((height, index) => (
+          <motion.span
+            key={height}
+            animate={{ rotate: [-2, 2, -2] }}
+            transition={{
+              duration: 3.4 + index * 0.4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            style={{ height }}
+            className="relative w-px origin-top bg-theme-primary/35"
+          >
+            {[14, 29, 44].map((top) => (
+              <span
+                key={top}
+                style={{ top }}
+                className="absolute -left-1 h-2 w-2 rounded-full bg-theme-primary/50"
+              />
+            ))}
+          </motion.span>
+        ))}
+      </div>
+    </motion.div>
+  );
+}
+
+function AmbientBackground() {
   return (
     <div
       className="pointer-events-none absolute inset-0 overflow-hidden"
       aria-hidden="true"
     >
-      <motion.div
-        animate={{ x: [0, 18, 0], y: [0, -12, 0] }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute -left-20 top-[10%] h-64 w-64 rounded-full bg-theme-accent/55 blur-3xl"
-      />
-
-      <motion.div
-        animate={{ x: [0, -14, 0], y: [0, 16, 0] }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute -right-24 bottom-[5%] h-72 w-72 rounded-full bg-theme-primary/10 blur-3xl"
-      />
-
-      {hearts.map((heart, index) => (
-        <motion.div
-          key={heart.position}
-          animate={{
-            y: [0, -10, 0],
-            rotate: [0, 6, 0],
-          }}
-          transition={{
-            duration: 4.5,
-            delay: heart.delay,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className={`absolute ${heart.position}`}
-        >
-          <Heart
-            className="fill-theme-accent/70 text-theme-primary/30"
-            size={index % 2 ? 17 : 13}
-          />
-        </motion.div>
-      ))}
+      <div className="absolute -left-20 top-[12%] h-64 w-64 rounded-full bg-theme-accent/35 blur-3xl" />
+      <div className="absolute -right-20 bottom-[8%] h-72 w-72 rounded-full bg-theme-accent/45 blur-3xl" />
     </div>
   );
 }
