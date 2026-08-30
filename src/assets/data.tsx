@@ -10,6 +10,7 @@ const WEDDING = {
     fullName: "Faiz Fathur Rahman",
     parents: "Putra dari Bapak Safari Hamzah dan Ibu Leli Zuhairiah",
     origin: "Keluarga Kalimantan Barat",
+    photo: "../images/groom.png",
   },
   bride: {
     firstName: "Fira",
@@ -82,9 +83,23 @@ const STORIES: StoryItem[] = [
 ];
 
 const GALLERY = [
-  { title: "Pertemuan", caption: "Sebuah awal yang sederhana", gradient: "from-[#b6a17b] to-[#5d4935]" },
-  { title: "Keluarga", caption: "Dua rumah, satu tujuan", gradient: "from-[#8d6b4b] to-[#3e3025]" },
-  { title: "Janji", caption: "Melangkah bersama", gradient: "from-[#c0a978] to-[#6d523b]" },
+  {
+    title: "Pertemuan",
+    caption: "Sebuah awal yang sederhana",
+    gradient: "from-theme-accent to-theme-primary",
+    photoUrl: "../images/gallery-1.jpg",
+  },
+  {
+    title: "Keluarga",
+    caption: "Dua rumah, satu tujuan",
+    gradient: "from-theme-surface-elevated to-theme-primary-dark",
+  },
+  {
+    title: "Janji",
+    caption: "Melangkah bersama",
+    gradient: "from-theme-primary to-theme-primary-dark",
+    photoUrl: "../images/gallery-3.jpeg",
+  },
 ];
 
 const EASE = [0.22, 1, 0.36, 1] as const;

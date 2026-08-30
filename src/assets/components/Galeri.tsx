@@ -14,6 +14,7 @@ export default function GallerySection() {
         title="Galeri Kami"
         description="Ruang sederhana untuk menyimpan potongan cerita yang berarti bagi kami."
       />
+
       <StaggerReveal
         className="mx-auto grid max-w-5xl gap-4 md:grid-cols-3"
         stagger={0.16}
@@ -30,17 +31,36 @@ export default function GallerySection() {
               stiffness: 220,
               damping: 20,
             }}
-            className={`relative flex min-h-85 items-end overflow-hidden bg-linear-to-br p-7 ${item.gradient} ${index === 1 ? "md:-translate-y-5" : ""
-              }`}
+            className={`group relative flex min-h-85 items-end overflow-hidden ${
+              index === 1 ? "md:-translate-y-5" : ""
+            }`}
           >
+            {item.photoUrl && (
+              <img
+                src={item.photoUrl}
+                alt={item.caption}
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            )}
+
+            {/* Gradient overlay for text readability */}
+            <div
+              className={`absolute inset-0 bg-linear-to-b opacity-20 ${item.gradient}`}
+            />
+
+            {/* Subtle dark overlay */}
+            <div className="absolute inset-0 bg-theme-overlay/10 transition-colors duration-500 group-hover:bg-theme-overlay/5" />
+
+            {/* Animated inner border */}
             <motion.div
-              className="absolute inset-3 border border-theme-surface/30"
+              className="pointer-events-none absolute inset-3 border border-theme-surface/40"
               whileHover={{ inset: 18 }}
               transition={{ duration: 0.4 }}
             />
 
-            <div className="relative">
-              <p className="text-xs uppercase tracking-[0.2em] text-theme-surface/65">
+            {/* Gallery content */}
+            <div className="relative z-10 p-7">
+              <p className="text-xs uppercase tracking-[0.2em] text-theme-surface/70">
                 0{index + 1}
               </p>
 
@@ -48,7 +68,7 @@ export default function GallerySection() {
                 {item.title}
               </h3>
 
-              <p className="mt-1 text-sm text-theme-surface/75">
+              <p className="mt-1 text-sm text-theme-surface/80">
                 {item.caption}
               </p>
             </div>
