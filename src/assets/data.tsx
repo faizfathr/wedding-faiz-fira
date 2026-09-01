@@ -104,4 +104,6 @@ const GALLERY = [
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-export { WEDDING, NAV_ITEMS, EVENTS, STORIES, GALLERY, EASE };
+const MUSIC_URL = "https://res.cloudinary.com/dxjv0gq1k/video/upload/v1697030915/2026-11-16_09-00-00_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_mzq3xj.mp3";
+
+export { WEDDING, NAV_ITEMS, EVENTS, STORIES, GALLERY, EASE, MUSIC_URL };
