@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
-import Heading from "./Heading";
 import { GALLERY } from "../data";
 import StaggerReveal from "./animations/StaggerReveal";
+import { CulturalDivider } from "./Ornament";
+import Reveal from "./animations/Reveal";
 
 export default function GallerySection() {
   return (
@@ -9,11 +10,29 @@ export default function GallerySection() {
       id="gallery"
       className="bg-theme-primary px-5 py-24 text-theme-page"
     >
-      <Heading
-        eyebrow="Kenangan"
-        title="Galeri Kami"
-        description="Ruang sederhana untuk menyimpan potongan cerita yang berarti bagi kami."
-      />
+      <header className="mx-auto mb-6 max-w-2xl text-center">
+            <Reveal direction="down" duration={0.65}>
+              <p className="mb-3 text-xs uppercase tracking-[0.3em] text-white">
+                Kenangan
+              </p>
+            </Reveal>
+      
+            <Reveal direction="scale" delay={0.08} duration={0.8}>
+              <h2 className="font-serif text-4xl text-zinc-900 md:text-5xl">
+                Galeri Kami
+              </h2>
+            </Reveal>
+      
+            <Reveal direction="fade" delay={0.15}>
+              <CulturalDivider isDark={true} />
+            </Reveal>
+      
+              <Reveal direction="up" delay={0.2}>
+                <p className="leading-5 text-amber-50/70">
+                  Ruang sederhana untuk menyimpan potongan cerita yang berarti bagi kami.
+                </p>
+              </Reveal>
+          </header>
 
       <StaggerReveal
         className="mx-auto grid max-w-5xl gap-4 md:grid-cols-3"
@@ -31,9 +50,7 @@ export default function GallerySection() {
               stiffness: 220,
               damping: 20,
             }}
-            className={`group relative flex min-h-85 items-end overflow-hidden ${
-              index === 1 ? "md:-translate-y-5" : ""
-            }`}
+            className="group relative flex min-h-85 items-end overflow-hidden"
           >
             {item.photoUrl && (
               <img

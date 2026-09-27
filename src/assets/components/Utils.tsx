@@ -5,7 +5,7 @@ function scrollToSection(id: string): void {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 }
 
-function CopyButton({ value }: { value: string }) {
+function CopyButton({ value, isDark=false, content }: { value: string; isDark?: boolean; content:string }) {
   const [copied, setCopied] = useState(false);
 
   async function copy() {
@@ -18,10 +18,10 @@ function CopyButton({ value }: { value: string }) {
     <button
       type="button"
       onClick={copy}
-      className="inline-flex items-center gap-2 border border-[#bba887] px-4 py-2 text-xs uppercase tracking-[0.14em] text-[#644e38] transition hover:bg-[#594437] hover:text-white"
+      className={`inline-flex items-center gap-2 border border-[#bba887] px-4 py-2 text-xs uppercase tracking-[0.14em] ${!isDark ? "text-[#644e38]" : "text-white"} transition hover:bg-[#594437] hover:text-white`}
     >
       {copied ? <Check size={15} /> : <Copy size={15} />}
-      {copied ? "Tersalin" : "Salin rekening"}
+      {copied ? "Tersalin" : `Salin ${content}`}
     </button>
   );
 }

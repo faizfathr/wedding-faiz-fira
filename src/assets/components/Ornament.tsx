@@ -46,13 +46,13 @@ function SulawesiBaratOrnament({ className = "" }: { className?: string }) {
   );
 }
 
-function CulturalDivider() {
+function CulturalDivider({ isDark = false }: { isDark?: boolean }) {
   return (
     <motion.div
       initial={{ opacity: 0, scaleX: 0.7 }}
       animate={{ opacity: 1, scaleX: 1 }}
       transition={{ duration: 0.8, delay: 0.5, ease: EASE }}
-      className="mx-auto flex w-full max-w-sm items-center gap-3 py-6 text-theme-primary"
+      className={`mx-auto flex w-full max-w-sm items-center gap-3 py-6 ${isDark ? "text-theme-surface" : "text-theme-primary"}`}
       aria-hidden="true"
     >
       <span className="h-px flex-1 bg-current opacity-30" />

@@ -26,8 +26,8 @@ export default function Couple() {
             name={WEDDING.groom.fullName}
             parents={WEDDING.groom.parents}
             origin={WEDDING.groom.origin}
-            photoUrl={WEDDING.groom.photo}
-            photoAlt={`Foto ${WEDDING.groom.fullName}`}
+              photoUrl={WEDDING.groom.photo}
+              photoAlt={`Foto ${WEDDING.groom.fullName}`}
           />
         </Reveal>
 
@@ -45,8 +45,8 @@ export default function Couple() {
             name={WEDDING.bride.fullName}
             parents={WEDDING.bride.parents}
             origin={WEDDING.bride.origin}
-          // photoUrl="/images/bride.jpg"
-          // photoAlt={`Foto ${WEDDING.bride.fullName}`}
+            photoUrl={WEDDING.bride.photo}
+            photoAlt={`Foto ${WEDDING.bride.fullName}`}
           />
         </Reveal>
       </div>

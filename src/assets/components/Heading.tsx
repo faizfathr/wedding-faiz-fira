@@ -10,7 +10,7 @@ export default function Heading({
   description?: string;
 }) {
   return (
-    <header className="mx-auto mb-12 max-w-2xl text-center">
+    <header className="mx-auto mb-6 max-w-2xl text-center">
       <Reveal direction="down" duration={0.65}>
         <p className="mb-3 text-xs uppercase tracking-[0.3em] text-[#96764d]">
           {eyebrow}
@@ -29,7 +29,7 @@ export default function Heading({
 
       {description && (
         <Reveal direction="up" delay={0.2}>
-          <p className="leading-7 text-[#706458]">
+          <p className="leading-5 text-[#706458]">
             {description}
           </p>
         </Reveal>

@@ -13,9 +13,9 @@ type WeddingLetterOpeningProps = {
 };
 
 export default function WeddingLetterOpening({
-  initials = "F & M",
+  initials = "F & F",
   invitationTitle = "Undangan Pernikahan",
-  openLabel = "Geser atau klik untuk membuka",
+  openLabel = "klik untuk membuka",
   children,
 }: WeddingLetterOpeningProps) {
   const [isOpened, setIsOpened] = useState(false);
@@ -189,16 +189,6 @@ export default function WeddingLetterOpening({
               <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-theme-text-muted">
                 {invitationTitle}
               </p>
-
-              <motion.h1
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.75, delay: 0.15, ease: EASE }}
-                className="mb-8 font-serif text-4xl italic tracking-wide text-theme-primary sm:text-5xl"
-              >
-                {initials}
-              </motion.h1>
-
               <div className="relative mx-auto aspect-[1.48/1] w-full max-w-107.5 perspective-[1400px]">
                 <FloralCluster position="left" />
                 <FloralCluster position="right" />

@@ -30,7 +30,7 @@ export default function GiftSection() {
             <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-theme-accent/40" />
 
             <Banknote
-              className="mb-6 text-theme-primary"
+              className="mb-2 text-theme-primary"
               size={30}
               strokeWidth={1.3}
             />
@@ -39,21 +39,21 @@ export default function GiftSection() {
               {account.bank}
             </p>
 
-            <p className="mt-3 font-serif text-3xl tracking-wider text-theme-text">
+            <p className="mt-1 font-serif text-xl tracking-wider text-theme-text">
               {account.accountNumber}
             </p>
 
-            <p className="mb-6 mt-2 text-sm text-theme-text-muted">
+            <p className="mb-2 mt-1 text-sm text-theme-text-muted">
               a.n. {account.accountName}
             </p>
 
-            <CopyButton value={account.accountNumber} />
+            <CopyButton content="Rekening" value={account.accountNumber} />
           </motion.article>
         ))}
       </StaggerReveal>
 
       <Reveal className="mx-auto mt-5 max-w-4xl">
-        <div className="border border-theme-primary bg-theme-primary p-7 text-center text-theme-page sm:flex sm:items-center sm:justify-between sm:text-left">
+        <div className="border border-theme-primary bg-theme-primary p-6 text-center text-theme-page sm:flex sm:items-center sm:justify-between sm:text-left">
           <div className="flex items-start justify-center gap-4 sm:justify-start">
             <Gift
               className="mt-1 shrink-0 text-theme-accent"
@@ -66,13 +66,13 @@ export default function GiftSection() {
                 Kirim hadiah
               </p>
 
-              <p className="mt-2 max-w-xl text-sm leading-6 text-theme-surface-elevated">
+              <p className="mt-2 mb-1 max-w-xl text-sm leading-6 text-theme-surface-elevated">
                 {WEDDING.giftAddress}
               </p>
+              <CopyButton content="Alamat" value={WEDDING.giftAddress} isDark={true} />
             </div>
           </div>
 
-          <CopyButton value={WEDDING.giftAddress} />
         </div>
       </Reveal>
 

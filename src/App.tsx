@@ -10,11 +10,12 @@ import './App.css';
 import GiftSection from "./assets/components/GiftSection";
 import FloatingNav from "./assets/components/FloatingNav";
 import WeddingLetterOpening from "./assets/components/Welcome";
+import QuranVerse from "./assets/components/QuranVerse";
 
 export default function App() {
   return (
     <WeddingLetterOpening
-      initials="F & M"
+      initials="F & F"
       invitationTitle="Undangan Pernikahan"
       openLabel="Buka undangan"
     >
@@ -24,6 +25,7 @@ export default function App() {
         <main>
           <Hero />
           <Couple />
+          <QuranVerse />
           <Events />
           <StorySection />
           <GallerySection />
