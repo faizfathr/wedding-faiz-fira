@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Heart, VolumeX, Volume2 } from "lucide-react";
 const EASE = [0.22, 1, 0.36, 1] as const;
-const MUSIC_URL = "/music/music.mp3"; 
+const MUSIC_URL = "/music/music-2.mp3"; 
 
 type WeddingLetterOpeningProps = {
   initials?: string;
@@ -292,7 +292,7 @@ export default function WeddingLetterOpening({
                   className={`absolute inset-x-[7%] top-[8%] h-[55%] bg-theme-primary [clip-path:polygon(0_0,100%_0,50%_100%)] ${isOpened ? "z-0" : "z-30"
                     }`}
                 >
-                  <div className="absolute inset-0 bg-theme-primary" />
+                  <div className="absolute inset-0 bg-[#f39eb6]" />
                   <div className="absolute inset-x-[12%] top-[14%] h-px bg-theme-accent/25" />
                 </motion.div>
 
@@ -301,7 +301,7 @@ export default function WeddingLetterOpening({
                 <motion.div
                   animate={isOpened ? { y: 14, scale: 0.97 } : { y: 0, scale: 1 }}
                   transition={{ duration: 0.7, ease: EASE }}
-                  className="pointer-events-none absolute inset-x-[7%] bottom-[8%] z-20 h-[62%] overflow-hidden rounded-b-sm border-x border-b border-theme-primary/20 bg-theme-accent [clip-path:polygon(0_0,50%_48%,100%_0,100%_100%,0_100%)]"
+                  className="pointer-events-none absolute inset-x-[7%] bottom-[8%] z-20 h-[62%] overflow-hidden rounded-b-sm border-x border-b border-theme-primary/20 bg-[#f39eb6] [clip-path:polygon(0_0,50%_48%,100%_0,100%_100%,0_100%)]"
                   aria-hidden="true"
                 />
                 <AnimatePresence>
@@ -315,7 +315,7 @@ export default function WeddingLetterOpening({
                       transition={{ duration: 0.45, delay: 0.4, ease: EASE }}
                       whileHover={{ scale: 1.07 }}
                       whileTap={{ scale: 0.92 }}
-                      className="absolute left-1/2 top-[52%] z-40 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-[3px] border-theme-accent bg-theme-primary text-theme-accent shadow-[0_8px_24px_rgba(125,90,90,0.3)]"
+                      className="absolute left-1/2 top-[52%] z-40 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-[3px] border-theme-accent bg-[#f39eb6] text-theme-accent shadow-[0_8px_24px_rgba(125,90,90,0.3)]"
                       aria-label="Buka undangan"
                     >
                       <span className="absolute inset-1 rounded-full border border-theme-accent/30" />

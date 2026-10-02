@@ -55,7 +55,7 @@ const EVENTS: EventItem[] = [
     title: "Akad Nikah & Resepsi",
     time: "09.00 – 16.00 WITA",
     description: "Prosesi pernikahan dan acara resepsi.",
-    venue: "Masjid Raya Suada",
+    venue: "Aula Masjid Raya Mamuju",
     date: "2026-11-16T09:00:00+07:00",
     address: "Jl. A.P. Pettarani, Kabupaten Mamuju",
     mapsUrl: "https://maps.app.goo.gl/WEt1DZC83VtEsyzG7",
@@ -81,12 +81,12 @@ const STORIES: StoryItem[] = [
   {
     year: "2024",
     title: "Semesta Punya Cara",
-    description: "Awal tahun 2024, kami kembali dipertemukan saat menjalani magang di BPS Jakarta Barat. Entah kenapa, hampir setiap kali berbicara selalu saja berakhir dengan perdebatan kecil. Fira bahkan pernah berpikir" + " 'Kok ada ya orang senyebelin ini?'" + " Tapi ternyata benar kata orang, semakin sering bertemu, semakin banyak cerita yang dibagi, rasa itu bisa berubah tanpa disadari. Yang awalnya hanya kesal, perlahan berubah menjadi nyaman. Hingga di hari terakhir magang, kami memutuskan untuk saling mengenal satu sama lain lebih jauh.",
+    description: "Awal tahun 2024, kami kembali dipertemukan saat menjalani magang di BPS Jakarta Barat. Entah kenapa, hampir setiap kali berbicara selalu saja berakhir dengan perdebatan kecil.Namun benar kata orang, semakin sering bertemu, semakin banyak cerita yang dibagi, rasa itu bisa berubah tanpa disadari. Hingga di hari terakhir magang, kami memutuskan untuk saling mengenal satu sama lain lebih jauh.",
   },
   {
     year: "2025",
     title: "Menjaga yang Sudah Ditemukan",
-    description: "Setelah resmi lulus, kami menjalani hubungan jarak jauh antara Kalimantan Barat dan Sulawesi Barat. Bukan perjalanan yang selalu mudah, tapi setiap rindu, setiap cerita, dan setiap usaha untuk saling menjaga membuat kami semakin yakin bahwa hubungan ini layak diperjuangkan. Di penghujung tahun, Faiz datang ke Sulawesi untuk bertemu keluarga Fira dan menyampaikan niat baiknya untuk melangkah ke jenjang yang lebih serius.",
+    description: "Setelah resmi lulus, kami menjalani hubungan jarak jauh antara Kalimantan Barat dan Sulawesi Barat. Bukan perjalanan yang selalu mudah, tapi setiap rindu, setiap cerita, dan setiap usaha untuk saling menjaga membuat kami semakin yakin bahwa hubungan ini layak diperjuangkan.",
   },
   {
     year: "2026",
@@ -137,6 +137,6 @@ const HANGING_PHOTOS = [
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-const MUSIC_URL = "https://res.cloudinary.com/dxjv0gq1k/video/upload/v1697030915/2026-11-16_09-00-00_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_mzq3xj.mp3";
+const MUSIC_URL = "https://www.youtube.com/watch?v=BqFEtDsTUrQ&list=RDBqFEtDsTUrQ&start_radio=1";
 
 export { WEDDING, NAV_ITEMS, EVENTS, STORIES, GALLERY, EASE, MUSIC_URL, HANGING_PHOTOS };
