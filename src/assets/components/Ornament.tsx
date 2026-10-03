@@ -57,16 +57,16 @@ function CulturalDivider({ isDark = false }: { isDark?: boolean }) {
     >
       <span className="h-px flex-1 bg-current opacity-30" />
       <span className="h-2 w-2 rotate-45 border border-current" />
-      <HeartMark />
+      <HeartMark isDark={isDark} />
       <span className="h-2 w-2 rotate-45 border border-current" />
       <span className="h-px flex-1 bg-current opacity-30" />
     </motion.div>
   );
 }
 
-function HeartMark() {
+function HeartMark({isDark = false}: {isDark?: boolean}) {
   return (
-    <span className="relative flex h-5 w-5 rotate-45 items-center justify-center rounded-sm bg-theme-primary shadow-[0_4px_12px_rgba(125,90,90,0.2)]">
+    <span className={`relative flex h-5 w-5 rotate-45 items-center justify-center rounded-sm ${isDark ? 'bg-theme-surface' : 'bg-theme-primary'} shadow-[0_4px_12px_rgba(125,90,90,0.2)]`}>
       <span className="h-1.5 w-1.5 rounded-full bg-theme-accent" />
     </span>
   );

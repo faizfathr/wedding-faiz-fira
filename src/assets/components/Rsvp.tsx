@@ -220,7 +220,7 @@ function MessageModal({
     <AnimatePresence>
       <motion.div
         key={entry.id}
-        className="fixed inset-0 z-[100] flex items-center justify-center px-5 py-8"
+        className="fixed inset-0 z-100 flex items-center justify-center px-5 py-8"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -411,7 +411,6 @@ export default function RSVPSection() {
         if (
           Array.isArray(data) &&
           data.length > 0
-          // console.log("RSVP messages loaded:", data
         ) {
           console.log("RSVP messages loaded:", data);
           setMessages(
@@ -759,7 +758,7 @@ export default function RSVPSection() {
 
           <motion.div
             layout
-            className="grid max-h-[620px] grid-cols-3 gap-2 overflow-y-auto pr-1 sm:gap-3 lg:grid-cols-2 lg:gap-4 lg:pr-2"
+            className="grid max-h-155 grid-cols-3 gap-2 overflow-y-auto pr-1 sm:gap-3 lg:grid-cols-2 lg:gap-4 lg:pr-2"
           >
             <AnimatePresence initial>
               {messages.map(

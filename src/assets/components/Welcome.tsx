@@ -78,7 +78,7 @@ export default function WeddingLetterOpening({
   }
 
   return (
-    <div className="min-h-screen bg-theme-page text-theme-text">
+    <div className="min-h-screen bg-white text-theme-text">
       <audio
         ref={audioRef}
         src={MUSIC_URL}
@@ -229,7 +229,7 @@ export default function WeddingLetterOpening({
                         ease: EASE,
                       }
                   }
-                  className="absolute inset-x-[17%] bottom-[13%] z-20 h-[70%] border border-theme-primary/20 bg-theme-accent px-5 py-6 shadow-[0_12px_32px_rgba(125,90,90,0.14)]"
+                  className="absolute inset-x-[17%] bottom-[13%] z-20 h-[70%] border border-theme-primary/20 bg-theme-primary px-5 py-6 shadow-[0_12px_32px_rgba(125,90,90,0.14)]"
                 >
                   <motion.div
                     animate={
@@ -244,7 +244,7 @@ export default function WeddingLetterOpening({
                     }}
                     className="flex h-full items-center justify-center border border-theme-primary/25"
                   >
-                    <p className="font-serif text-4xl tracking-widest text-theme-primary sm:text-5xl">
+                    <p className="font-serif text-4xl tracking-widest text-white sm:text-5xl">
                       {initials}
                     </p>
                   </motion.div>
@@ -292,7 +292,7 @@ export default function WeddingLetterOpening({
                   className={`absolute inset-x-[7%] top-[8%] h-[55%] bg-theme-primary [clip-path:polygon(0_0,100%_0,50%_100%)] ${isOpened ? "z-0" : "z-30"
                     }`}
                 >
-                  <div className="absolute inset-0 bg-[#f39eb6]" />
+                  <div className="absolute inset-0 bg-theme-primary-soft" />
                   <div className="absolute inset-x-[12%] top-[14%] h-px bg-theme-accent/25" />
                 </motion.div>
 
@@ -301,7 +301,7 @@ export default function WeddingLetterOpening({
                 <motion.div
                   animate={isOpened ? { y: 14, scale: 0.97 } : { y: 0, scale: 1 }}
                   transition={{ duration: 0.7, ease: EASE }}
-                  className="pointer-events-none absolute inset-x-[7%] bottom-[8%] z-20 h-[62%] overflow-hidden rounded-b-sm border-x border-b border-theme-primary/20 bg-[#f39eb6] [clip-path:polygon(0_0,50%_48%,100%_0,100%_100%,0_100%)]"
+                  className="pointer-events-none absolute inset-x-[7%] bottom-[8%] z-20 h-[62%] overflow-hidden rounded-b-sm border-x border-b border-theme-primary/20 bg-theme-primary-soft [clip-path:polygon(0_0,50%_48%,100%_0,100%_100%,0_100%)]"
                   aria-hidden="true"
                 />
                 <AnimatePresence>

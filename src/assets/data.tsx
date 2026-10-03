@@ -95,27 +95,56 @@ const STORIES: StoryItem[] = [
   },
 ];
 
-const GALLERY = [
+const MEMORY_ALBUM = [
   {
-    title: "Pertemuan",
-    caption: "Sebuah awal yang sederhana",
-    gradient: "from-theme-accent to-theme-primary",
-    photoUrl: "../images/gallery-1.jpg",
-    mapsUrl: "https://www.google.com/maps/place/Masjid+Raya+Suada+-+Mamuju/@-2.6750856,118.8858592,17z/data=!3m1!4b1!4m6!3m5!1s0x2d92d9b47a147161:0x7177e0b4de6e3d7e!8m2!3d-2.675091!4d118.8884341!16s%2Fg%2F12mq2trll?entry=ttu&g_ep=EgoyMDI2MDcyMi4wIKXMDSoASAFQAw%3D%3D",
+    src: "/images/galleries/album-01.jpg",
+    alt: "Kenangan bersama pertama",
+    className: "md:col-span-4 md:row-span-5 -rotate-2",
+    objectPosition: "object-center",
   },
   {
-    title: "Keluarga",
-    caption: "Dua rumah, satu tujuan",
-    gradient: "from-theme-surface-elevated to-theme-primary-dark",
-    photoUrl: "../images/gallery-2.jpeg",
+    src: "/images/galleries/album-02.jpeg",
+    alt: "Kenangan perjalanan bersama",
+    className: "md:col-span-3 md:row-span-4 rotate-2 md:translate-y-7",
+    objectPosition: "object-center",
   },
   {
-    title: "Janji",
-    caption: "Melangkah bersama",
-    gradient: "from-theme-primary to-theme-primary-dark",
-    photoUrl: "../images/gallery-3.jpeg",
+    src: "/images/galleries/album-03.jpeg",
+    alt: "Kenangan hari istimewa",
+    className: "md:col-span-5 md:row-span-4 -rotate-1",
+    objectPosition: "object-top",
   },
-];
+  {
+    src: "/images/galleries/album-04.jpeg",
+    alt: "Kenangan bersama keluarga",
+    className: "md:col-span-3 md:row-span-4 rotate-3 md:-translate-y-3",
+    objectPosition: "object-center",
+  },
+  {
+    src: "/images/galleries/album-05.jpeg",
+    alt: "Kenangan senja bersama",
+    className: "md:col-span-5 md:row-span-5 -rotate-2 md:translate-y-5",
+    objectPosition: "object-center",
+  },
+  {
+    src: "/images/galleries/album-06.jpeg",
+    alt: "Kenangan perjalanan menuju pernikahan",
+    className: "md:col-span-4 md:row-span-4 rotate-1",
+    objectPosition: "object-top",
+  },
+  {
+    src: "/images/galleries/album-07.jpeg",
+    alt: "Kenangan sederhana bersama",
+    className: "md:col-span-5 md:row-span-4 rotate-2 md:-translate-y-5",
+    objectPosition: "object-center",
+  },
+  {
+    src: "/images/galleries/album-08.jpeg",
+    alt: "Kenangan menjelang hari pernikahan",
+    className: "md:col-span-3 md:row-span-5 -rotate-3 md:translate-y-4",
+    objectPosition: "object-center",
+  },
+] as const;
 
 const HANGING_PHOTOS = [
   {
@@ -139,4 +168,4 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 const MUSIC_URL = "https://www.youtube.com/watch?v=BqFEtDsTUrQ&list=RDBqFEtDsTUrQ&start_radio=1";
 
-export { WEDDING, NAV_ITEMS, EVENTS, STORIES, GALLERY, EASE, MUSIC_URL, HANGING_PHOTOS };
+export { WEDDING, NAV_ITEMS, EVENTS, STORIES, MEMORY_ALBUM, EASE, MUSIC_URL, HANGING_PHOTOS };
