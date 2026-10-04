@@ -18,7 +18,7 @@ function CopyButton({ value, isDark=false, content }: { value: string; isDark?: 
     <button
       type="button"
       onClick={copy}
-      className={`inline-flex items-center gap-2 border border-[#bba887] px-4 py-2 text-xs uppercase tracking-[0.14em] ${!isDark ? "text-[#644e38]" : "text-white"} transition hover:bg-[#594437] hover:text-white`}
+      className={`inline-flex items-center gap-2 border  px-4 py-2 text-xs uppercase tracking-[0.14em] ${!isDark ? "text-[#644e38] border-[#bba887]" : "text-white border-white"} transition hover:bg-[#594437] hover:text-white`}
     >
       {copied ? <Check size={15} /> : <Copy size={15} />}
       {copied ? "Tersalin" : `Salin ${content}`}

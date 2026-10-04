@@ -13,33 +13,6 @@ import { EVENTS } from "../data";
 import Countdown from "./Countdown";
 import Reveal from "./animations/Reveal";
 
-/*
-Recommended EVENTS data shape in ../data.ts:
-
-export const EVENTS = [
-  {
-    title: "Resepsi Kalimantan Barat",
-    region: "Kalimantan Barat",
-    date: "Sabtu, 12 Desember 2026",
-    time: "11.00 - 14.00 WIB",
-    venue: "Gedung Serbaguna Nusantara",
-    address: "Jl. Merdeka No. 12, Pontianak",
-    mapsUrl: "https://maps.google.com/...",
-    description: "Ramahi tamah dan jamuan bersama keluarga serta para tamu.",
-  },
-  {
-    title: "Resepsi Sulawesi Barat",
-    region: "Sulawesi Barat",
-    date: "Sabtu, 19 Desember 2026",
-    time: "11.00 - 14.00 WITA",
-    venue: "Gedung Pertemuan Mandar",
-    address: "Alamat acara di Sulawesi Barat",
-    mapsUrl: "https://maps.google.com/...",
-    description: "Perayaan dan silaturahmi bersama keluarga di Sulawesi Barat.",
-  },
-];
-*/
-
 export default function Events() {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -105,14 +78,14 @@ export default function Events() {
   return (
     <section
       id="events"
-      className="relative overflow-hidden bg-theme-surface-elevated px-5 py-24"
+      className="relative overflow-hidden bg-theme-surface-elevated px-5 py-10"
     >
       <KalimantanBaratOrnament className="-right-6 top-12 h-48 w-48" />
 
       <Heading
         eyebrow="Simpan tanggalnya"
         title="Rangkaian Acara"
-        description="Geser untuk melihat rangkaian acara di Kalimantan Barat dan Sulawesi Barat."
+        description="Rangkaian acara di Kalimantan Barat dan Sulawesi Barat."
       />
 
       <Reveal direction="up" duration={0.9}>
@@ -279,8 +252,10 @@ export default function Events() {
           </div>
         </div>
       </Reveal>
-
-      <Countdown />
+      
+      <Reveal direction="up" duration={0.9} delay={0.15}>
+        <Countdown />
+      </Reveal>
     </section>
   );
 }

@@ -16,7 +16,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 hidden border-b border-theme-border/80 bg-theme-page/90 backdrop-blur-md lg:block">
+    <header className="fixed inset-x-0 top-0 z-50 hidden border-b border-theme-border/80 bg-theme-primary/90 backdrop-blur-md lg:block">
       <nav
         className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5"
         aria-label="Navigasi utama"
@@ -24,9 +24,9 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => navigate("home")}
-          className="font-serif text-xl tracking-[0.18em] text-theme-primary"
+          className="font-serif text-xl tracking-[0.18em] text-theme-primary-soft"
         >
-          F <span className="text-theme-text-muted">&</span> M
+          F <span className="text-theme-primary-soft">&</span>F
         </button>
 
         <div className="hidden items-center gap-7 md:flex">
@@ -35,7 +35,7 @@ export default function Navbar() {
               key={item.target}
               type="button"
               onClick={() => navigate(item.target)}
-              className="text-xs uppercase tracking-[0.16em] text-theme-text-muted transition-colors hover:text-theme-primary"
+              className="text-xs uppercase tracking-[0.16em] text-theme-text-soft transition-colors hover:text-theme-primary"
             >
               {item.label}
             </button>

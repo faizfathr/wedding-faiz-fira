@@ -14,9 +14,8 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-svh items-center justify-center overflow-hidden bg-theme-primary px-5 pb-16 pt-24 text-center"
+      className="relative flex min-h-svh items-center justify-center overflow-hidden bg-theme-primary px-5 py-10 text-center"
     >
-      {/* Main background photo */}
       <motion.img
         src={HERO_BACKGROUND}
         alt=""
@@ -26,26 +25,20 @@ export default function Hero() {
         transition={{ duration: 1.6, ease: EASE }}
         className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center grayscale-20"
       />
-
-      {/* Dark gray overlay for readability */}
       <div
         className="pointer-events-none absolute inset-0 bg-black/55"
         aria-hidden="true"
       />
 
-      {/* Palette overlay keeps the photo consistent with the wedding theme */}
       <div
         className="pointer-events-none absolute inset-0 bg-theme-primary/30 mix-blend-multiply"
         aria-hidden="true"
       />
-
-      {/* Soft cinematic focus behind the main content */}
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.12)_42%,rgba(0,0,0,0.58)_100%)]"
         aria-hidden="true"
       />
 
-      {/* Warm blush lighting using the configured palette */}
       <motion.div
         animate={{ x: [0, 18, 0], y: [0, -12, 0] }}
         transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
@@ -122,11 +115,6 @@ export default function Hero() {
 
           {WEDDING.bride.firstName}
         </motion.h1>
-
-        {/*
-          If CulturalDivider contains dark hard-coded colors, add a `light`
-          prop there and use <CulturalDivider light /> instead.
-        */}
         <div className="text-theme-accent">
           <CulturalDivider />
         </div>

@@ -9,7 +9,7 @@ export default function Couple() {
   return (
     <section
       id="couple"
-      className="relative overflow-hidden bg-theme-surface px-5 py-24"
+      className="relative overflow-hidden bg-theme-surface px-5 py-10"
     >
       <SulawesiBaratOrnament className="-left-20 top-10 h-52 w-80" />
 

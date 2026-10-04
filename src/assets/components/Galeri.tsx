@@ -8,7 +8,7 @@ export default function GallerySection() {
   return (
     <section
       id="gallery"
-      className="relative overflow-hidden bg-theme-primary px-5 text-theme-page"
+      className="relative overflow-hidden bg-theme-primary p-5 text-theme-page"
     >
 
       <div className="relative mx-auto mt-10 max-w-6xl">

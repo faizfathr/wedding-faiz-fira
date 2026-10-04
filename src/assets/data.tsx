@@ -20,7 +20,7 @@ const WEDDING = {
     photo: "../images/Bride.jpeg",
   },
   isoDate: "2026-11-16T09:00:00+07:00",
-  displayDate: "Sabtu, 16 November 2026",
+  displayDate: "Senin, 16 November 2026",
   bankAccounts: [
     {
       bank: "Bank Syariah Indonesia",
@@ -38,6 +38,23 @@ const WEDDING = {
   giftAddress: "Jl. Yos Sudarso No. 19, Singkawang, Kalimantan Barat",
 };
 
+const GIFT_ADDRESSES = [
+  {
+    id: "kalimantan-barat",
+    region: "Kalimantan Barat",
+    recipient: "Nama Penerima",
+    address:
+      "Jl. Merdeka No. 12, Pontianak, Kalimantan Barat",
+  },
+  {
+    id: "sulawesi-barat",
+    region: "Sulawesi Barat",
+    recipient: "Nama Penerima",
+    address:
+      "Jl. Contoh No. 21, Mamuju, Sulawesi Barat",
+  },
+];
+
 
 const NAV_ITEMS: NavItem[] = [
   { label: "Beranda", target: "home", icon: Home },
@@ -53,7 +70,7 @@ const EVENTS: EventItem[] = [
   {
     region: "Sulawesi Barat",
     title: "Akad Nikah & Resepsi",
-    time: "09.00 – 16.00 WITA",
+    time: "09.30 – 16.00 WITA",
     description: "Prosesi pernikahan dan acara resepsi.",
     venue: "Aula Masjid Raya Mamuju",
     date: "2026-11-16T09:00:00+07:00",
@@ -166,6 +183,6 @@ const HANGING_PHOTOS = [
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-const MUSIC_URL = "https://www.youtube.com/watch?v=BqFEtDsTUrQ&list=RDBqFEtDsTUrQ&start_radio=1";
+const MUSIC_URL = "/music/music-2.mp3";
 
-export { WEDDING, NAV_ITEMS, EVENTS, STORIES, MEMORY_ALBUM, EASE, MUSIC_URL, HANGING_PHOTOS };
+export { WEDDING, NAV_ITEMS, EVENTS, STORIES, MEMORY_ALBUM, EASE, MUSIC_URL, HANGING_PHOTOS, GIFT_ADDRESSES };

@@ -1,3 +1,4 @@
+import './App.css';
 import Hero from "./assets/components/Hero";
 import Navbar from "./assets/components/Navbar";
 import Couple from "./assets/components/Couple";
@@ -6,10 +7,9 @@ import GallerySection from "./assets/components/Galeri";
 import RSVPSection from "./assets/components/Rsvp";
 import Footer from "./assets/components/Footer";
 import StorySection from "./assets/components/StorySection";
-import './App.css';
 import GiftSection from "./assets/components/GiftSection";
 import FloatingNav from "./assets/components/FloatingNav";
-import WeddingLetterOpening from "./assets/components/Welcome";
+import WeddingLetterOpening from "./assets/components/WeddingLetterOpening";
 import QuranVerse from "./assets/components/QuranVerse";
 
 export default function App() {
@@ -20,7 +20,6 @@ export default function App() {
       openLabel="Buka undangan"
     >
       <div className="min-h-screen scroll-smooth bg-[#fffdf8] font-sans text-[#43362d] selection:bg-[#c9b28d] selection:text-white">
-
         <Navbar />
         <main>
           <Hero />

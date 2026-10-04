@@ -31,7 +31,7 @@ export default function QuranVerse() {
   return (
     <section
       id="verse"
-      className="relative overflow-hidden bg-theme-page px-5 py-24"
+      className="relative overflow-hidden bg-theme-page px-5 py-10"
     >
       {/* Soft ambient palette decorations */}
       <div
