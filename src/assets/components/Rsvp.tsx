@@ -4,6 +4,8 @@ import {
 } from "react";
 import type { FormEvent } from "react";
 import { createPortal } from "react-dom";
+import Heading from "./Heading";
+import Reveal from "./animations/Reveal";
 import {
   AnimatePresence,
   motion,
@@ -12,16 +14,17 @@ import {
   CheckCircle2,
   Heart,
   Loader2,
+  Lock,
   MessageCircleHeart,
   Send,
   Sparkles,
+  Users,
   X,
 } from "lucide-react";
-import Heading from "./Heading";
-import Reveal from "./animations/Reveal";
+import useGuest from "../hooks/useGuests";
 
 const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbytxJvz-K_Bjgu6h-M5AEz2_QVBpXqI-9zPfVa3XeU2hF6sUJYGrdWLmxfqO9eX7dxVYg/exec";
+  "https://script.google.com/macros/s/AKfycbzSNTi-PUC9GidEX9Jy33dX524t8GvVIm_cvk0AshgL6lcWY4Iceghw1po6pJJaKJykZQ/exec";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -39,6 +42,7 @@ type RSVPStatus =
 type RSVPEntry = {
   id: string;
   name: string;
+  group: string;
   attendance: Attendance;
   guests: number;
   message: string;
@@ -57,6 +61,7 @@ type RSVPResponse = {
 
 const initialForm: RSVPForm = {
   name: "",
+  group: "Tamu Undangan",
   attendance: "Hadir",
   guests: 1,
   message: "",
@@ -66,6 +71,7 @@ const sampleMessages: RSVPEntry[] = [
   {
     id: "sample-1",
     name: "Keluarga Besar",
+    group: "Tamu Undangan",
     attendance: "Hadir",
     guests: 2,
     message:
@@ -75,6 +81,7 @@ const sampleMessages: RSVPEntry[] = [
   {
     id: "sample-2",
     name: "Sahabat Mempelai",
+    group: "Tamu Undangan",
     attendance: "Hadir",
     guests: 1,
     message:
@@ -162,12 +169,16 @@ function MessageCard({
           {entry.name.charAt(0).toUpperCase()}
         </div>
 
-        <div className="min-w-0">
+        <div className="min-w-0 flex-1">
           <h3 className="truncate font-serif text-xs text-theme-text sm:text-base">
             {entry.name}
           </h3>
 
-          <p className="mt-0.5 hidden text-[8px] uppercase tracking-wider text-theme-primary sm:block">
+          <p className="mt-0.5 truncate text-[7px] font-semibold uppercase tracking-[0.08em] text-theme-primary sm:text-[8px]">
+            {entry.group || "Tamu Undangan"}
+          </p>
+
+          <p className="mt-0.5 hidden text-[8px] uppercase tracking-wider text-theme-text-muted sm:block">
             {entry.attendance}
           </p>
         </div>
@@ -321,6 +332,16 @@ function MessageModal({
               </h3>
             </div>
           </div>
+          <div className="mt-2 inline-flex max-w-full items-center gap-2 rounded-full bg-theme-accent/55 px-3 py-1.5">
+            <Users
+              size={12}
+              className="shrink-0 text-theme-primary"
+            />
+
+            <span className="truncate text-[9px] font-semibold uppercase tracking-[0.1em] text-theme-primary">
+              {entry.group || "Tamu Undangan"}
+            </span>
+          </div>
 
           <div className="relative my-6 flex items-center gap-3 text-theme-primary">
             <span className="h-px flex-1 bg-current opacity-20" />
@@ -388,6 +409,8 @@ export default function RSVPSection() {
     setSelectedMessage,
   ] = useState<RSVPEntry | null>(null);
 
+  const guest = useGuest();
+  
   useEffect(() => {
     if (
       !GOOGLE_SCRIPT_URL.startsWith(
@@ -412,7 +435,6 @@ export default function RSVPSection() {
           Array.isArray(data) &&
           data.length > 0
         ) {
-          console.log("RSVP messages loaded:", data);
           setMessages(
             (data as RSVPEntry[])
               .slice()
@@ -472,6 +494,7 @@ export default function RSVPSection() {
     const newEntry: RSVPEntry = {
       id: crypto.randomUUID(),
       ...form,
+      group: guest.displayName,
       createdAt: new Date().toISOString(),
     };
 
@@ -510,7 +533,7 @@ export default function RSVPSection() {
       if (result.success !== true) {
         throw new Error(
           result.message ??
-            "Could not save RSVP.",
+          "Could not save RSVP.",
         );
       }
 
@@ -582,7 +605,32 @@ export default function RSVPSection() {
                   placeholder="Nama Anda"
                 />
               </label>
+              <label className="block">
+                <span className="mb-2 block text-xs uppercase tracking-[0.15em] text-theme-text-muted">
+                  Grup undangan
+                </span>
 
+                <div className="relative">
+                  <input
+                    type="text"
+                    value={guest.displayName}
+                    readOnly
+                    aria-readonly="true"
+                    tabIndex={-1}
+                    className="w-full cursor-not-allowed border border-theme-border bg-theme-accent/30 px-4 py-3 pr-12 font-medium text-theme-primary outline-none"
+                  />
+
+                  <div
+                    className="pointer-events-none absolute inset-y-0 right-4 flex items-center"
+                    aria-hidden="true"
+                  >
+                    <Lock
+                      size={15}
+                      className="text-theme-primary/70"
+                    />
+                  </div>
+                </div>
+              </label>
               <div className="grid gap-5 sm:grid-cols-2">
                 <label className="block">
                   <span className="mb-2 block text-xs uppercase tracking-[0.15em] text-theme-text-muted">

@@ -6,11 +6,13 @@ import {
   SulawesiBaratOrnament,
   CulturalDivider,
 } from "./Ornament";
+import UseGuest from "../hooks/useGuests";
 import { WEDDING, EASE } from "../data";
 
 const HERO_BACKGROUND = "/images/main-bg.jpeg";
 
 export default function Hero() {
+  const guest = UseGuest();
   return (
     <section
       id="home"
@@ -84,7 +86,7 @@ export default function Hero() {
           />
 
           <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-theme-accent">
-            Undangan Pernikahan
+            {guest.displayName === "Tamu Undangan" ? "Kepada Yth. " : "Turut mengundang "}<b>{guest.displayName}</b>
           </p>
         </motion.div>
 
@@ -94,7 +96,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="mb-5 font-serif text-sm italic tracking-wide text-theme-surface-elevated"
         >
-          Dengan penuh kasih, kami mengundang Anda
+          {guest.greeting}
         </motion.p>
 
         <motion.h1
