@@ -561,7 +561,7 @@ export default function RSVPSection() {
   return (
     <section
       id="rsvp"
-      className="bg-theme-surface px-5 py-10"
+      className="bg-theme-surface p-5"
     >
       <Heading
         eyebrow="Konfirmasi dan doa"

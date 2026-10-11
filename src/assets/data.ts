@@ -82,7 +82,7 @@ const EVENTS: EventItem[] = [
     title: "Resepsi",
     time: "11.00 – 16.00 WIB",
     description: "Ramahi tamah dan jamuan bersama para tamu.",
-    venue: "Rumah Adat Meyalu",
+    venue: "Rumah Adat Melayu",
     date: "2026-11-28T11:00:00+07:00",
     address: "Jl. Alianyang, Melayu, Kec. Singkawang Barat, Kota Singkawang",
     mapsUrl: "https://maps.app.goo.gl/d1cMhRYdoQVz2npP6"
@@ -93,7 +93,7 @@ const STORIES: StoryItem[] = [
   {
     year: "2022",
     title: "Berawal dari Sebuah Pertemuan",
-    description: "Kami dipertemukan di Politeknik Statistika STIS. Ada di tempat yang sama, bertemu setiap saat, tetapi belum pernah benar-benar saling mengenal. Saat itu kami sedang sibuk menyelesaikan semester akhir perkuliahan, jadi hubungan kami tidak lebih dari sekadar teman biasa.",
+    description: "Kami dipertemukan di Politeknik Statistika STIS. Ada di tempat yang sama, bertemu setiap saat, tetapi belum pernah benar-benar saling mengenal. Saat itu kami sedang fokus menyelesaikan semester akhir perkuliahan, jadi hubungan kami tidak lebih dari sekadar teman biasa.",
   },
   {
     year: "2024",
@@ -129,25 +129,25 @@ const MEMORY_ALBUM = [
     src: "/images/galleries/album-03.jpeg",
     alt: "Kenangan hari istimewa",
     className: "md:col-span-5 md:row-span-4 -rotate-1",
-    objectPosition: "object-top",
+    objectPosition: "object-bottom",
   },
   {
     src: "/images/galleries/album-04.jpeg",
-    alt: "Kenangan bersama keluarga",
+    alt: "Kenangan sederhana bersama",
     className: "md:col-span-3 md:row-span-4 rotate-3 md:-translate-y-3",
-    objectPosition: "object-center",
+    objectPosition: "object-bottom",
   },
   {
     src: "/images/galleries/album-05.jpeg",
-    alt: "Kenangan senja bersama",
+    alt: "Kenangan sederhana bersama",
     className: "md:col-span-5 md:row-span-5 -rotate-2 md:translate-y-5",
     objectPosition: "object-center",
   },
   {
     src: "/images/galleries/album-06.jpeg",
-    alt: "Kenangan perjalanan menuju pernikahan",
+    alt: "Kenangan sederhana bersama",
     className: "md:col-span-4 md:row-span-4 rotate-1",
-    objectPosition: "object-top",
+    objectPosition: "object-bottom",
   },
   {
     src: "/images/galleries/album-07.jpeg",

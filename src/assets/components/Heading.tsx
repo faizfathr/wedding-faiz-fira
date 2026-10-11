@@ -12,10 +12,9 @@ export default function Heading({
   isDark?: boolean;
 }) {
   return (
-    <header className="mx-auto mb-6 max-w-2xl text-center">
+    <header className=" mb-3 max-w-2xl text-center">
       <Reveal direction="down" duration={0.65}>
-        <p className={`mb-3 text-xs uppercase tracking-[0.3em] ${isDark ? 'text-[#f0e6d2]' : 'text-[#96764d]'}`}>
-
+        <p className={`mt-1 text-xs uppercase tracking-[0.3em] ${isDark ? 'text-[#f0e6d2]' : 'text-[#96764d]'}`}>
           {eyebrow}
         </p>
       </Reveal>

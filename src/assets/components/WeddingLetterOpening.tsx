@@ -232,7 +232,7 @@ export default function WeddingLetterOpening({
                         ease: EASE,
                       }
                   }
-                  className="absolute inset-x-[17%] bottom-[13%] z-20 h-[70%] border border-theme-primary/20 bg-theme-primary px-5 py-6 shadow-[0_12px_32px_rgba(125,90,90,0.14)]"
+                  className="absolute inset-x-[17%] bottom-[13%] z-20 h-[70%] rounded-2xl border-4 border-theme-primary bg-theme-primary-soft px-5 py-6 shadow-[0_12px_32px_rgba(125,90,90,0.14)]"
                 >
                   <motion.div
                     animate={
@@ -247,7 +247,7 @@ export default function WeddingLetterOpening({
                     }}
                     className="flex h-full items-center justify-center border border-theme-primary/25"
                   >
-                    <p className="font-serif text-4xl tracking-widest text-white sm:text-5xl">
+                    <p className="font-serif text-4xl tracking-widest text-theme-primary sm:text-5xl">
                       {initials}
                     </p>
                   </motion.div>

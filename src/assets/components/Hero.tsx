@@ -1,11 +1,7 @@
 import { motion } from "framer-motion";
 import { ChevronDown, Sparkles } from "lucide-react";
 import { scrollToSection } from "./Utils";
-import {
-  KalimantanBaratOrnament,
-  SulawesiBaratOrnament,
-  CulturalDivider,
-} from "./Ornament";
+import { CulturalDivider } from "./Ornament";
 import UseGuest from "../hooks/useGuests";
 import { WEDDING, EASE } from "../data";
 
@@ -54,9 +50,6 @@ export default function Hero() {
         className="pointer-events-none absolute -bottom-28 -right-20 h-80 w-80 rounded-full bg-theme-surface-elevated/15 blur-3xl"
         aria-hidden="true"
       />
-
-      <KalimantanBaratOrnament className="-left-12 top-24 h-56 w-56 !opacity-[0.12] text-theme-accent" />
-      <SulawesiBaratOrnament className="-bottom-5 -right-8 h-60 w-80 !opacity-[0.12] text-theme-accent" />
 
       {/* Elegant inner frame over the photograph */}
       <motion.div

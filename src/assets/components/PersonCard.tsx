@@ -19,7 +19,7 @@ export default function PersonCard({
 }: PersonCardProps) {
   return (
     <motion.article whileHover={{ y: -5 }} className="text-center">
-      <div className="mx-auto mb-6 h-36 w-24 overflow-hidden rounded-full border border-theme-border bg-theme-surface-elevated shadow-[0_12px_35px_rgba(125,90,90,0.12)]">
+      <div className="mx-auto mb-2 h-36 w-24 overflow-hidden rounded-full border border-theme-border bg-theme-surface-elevated shadow-[0_12px_35px_rgba(125,90,90,0.12)]">
         {photoUrl ? (
           <img src={photoUrl} alt={photoAlt} className="h-full w-full object-scale-down object-top" />
         ) : (
@@ -35,11 +35,11 @@ export default function PersonCard({
         {name}
       </h3>
 
-      <p className="mt-3 text-sm leading-6 text-theme-text-muted">
+      <p className=" text-sm leading-6 text-theme-text-muted">
         {parents}
       </p>
 
-      <p className="mt-2 text-xs uppercase tracking-[0.18em] text-theme-primary">
+      <p className=" text-xs uppercase tracking-[0.18em] text-theme-primary">
         {origin}
       </p>
     </motion.article>

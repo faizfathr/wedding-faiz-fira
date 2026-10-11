@@ -2,7 +2,9 @@ import { motion } from "framer-motion";
 import Reveal from "./animations/Reveal";
 import { MEMORY_ALBUM } from "./../data";
 import Heading from "./Heading";
+import { EASE } from "../data";
 
+const BACKGROUND_MEMORY = "/images/bg-memory.jpeg";
 
 export default function GallerySection() {
   return (
@@ -10,11 +12,19 @@ export default function GallerySection() {
       id="gallery"
       className="relative overflow-hidden bg-theme-primary p-5 text-theme-page"
     >
-
-      <div className="relative mx-auto mt-10 max-w-6xl">
+      <motion.img
+              src={BACKGROUND_MEMORY}
+              alt=""
+              aria-hidden="true"
+              initial={{ opacity: 0, scale: 1.08 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.6, ease: EASE }}
+              className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center grayscale-10"
+            />
+      <div className="relative mx-auto mt-1 max-w-6xl">
         <Reveal direction="up" duration={0.8}>
           <Heading
-            isDark={true}
+            // isDark={true}
             eyebrow="Album Kenangan"
             title="Potongan Perjalanan Kami"
             description="Delapan bingkai kecil yang menyimpan tawa, perjalanan, dan langkah-langkah sederhana menuju hari bahagia kami."
@@ -76,9 +86,9 @@ export default function GallerySection() {
         </div>
 
         <Reveal direction="fade" delay={0.2}>
-          <div className="mx-auto m-5 flex max-w-md items-center gap-4 text-theme-accent">
+          <div className="mx-auto m-5 flex max-w-md items-center gap-4 text-theme-text">
             <span className="h-px flex-1 bg-current opacity-35" />
-            <p className="font-serif text-sm italic text-theme-surface/75">
+            <p className="font-serif text-sm italic ">
               Delapan foto, satu cerita yang terus bertumbuh
             </p>
             <span className="h-px flex-1 bg-current opacity-35" />

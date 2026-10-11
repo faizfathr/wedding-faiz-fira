@@ -78,7 +78,7 @@ export default function Events() {
   return (
     <section
       id="events"
-      className="relative overflow-hidden bg-theme-surface-elevated px-5 py-10"
+      className="relative overflow-hidden bg-theme-surface-elevated px-5 py-5"
     >
       <KalimantanBaratOrnament className="-right-6 top-12 h-48 w-48" />
 
@@ -89,7 +89,7 @@ export default function Events() {
       />
 
       <Reveal direction="up" duration={0.9}>
-        <div className="relative mx-auto mt-10 max-w-5xl">
+        <div className="relative max-w-5xl">
           {/* Desktop and tablet navigation */}
           <button
             type="button"

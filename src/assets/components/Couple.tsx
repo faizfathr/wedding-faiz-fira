@@ -9,10 +9,9 @@ export default function Couple() {
   return (
     <section
       id="couple"
-      className="relative overflow-hidden bg-theme-surface px-5 py-10"
+      className="relative overflow-hidden bg-theme-surface p-5"
     >
       <SulawesiBaratOrnament className="-left-20 top-10 h-52 w-80" />
-
       <Heading
         eyebrow="Dengan penuh syukur"
         title="Kedua Mempelai"
