@@ -8,7 +8,7 @@ import { WEDDING, EASE } from "../data";
 const HERO_BACKGROUND = "/images/main-bg.jpeg";
 
 export default function Hero() {
-  const guest = UseGuest();
+  const { loading, guest } = UseGuest();
   return (
     <section
       id="home"
@@ -37,28 +37,7 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      <motion.div
-        animate={{ x: [0, 18, 0], y: [0, -12, 0] }}
-        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-        className="pointer-events-none absolute -left-24 top-[8%] h-72 w-72 rounded-full bg-theme-accent/20 blur-3xl"
-        aria-hidden="true"
-      />
-
-      <motion.div
-        animate={{ x: [0, -14, 0], y: [0, 16, 0] }}
-        transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
-        className="pointer-events-none absolute -bottom-28 -right-20 h-80 w-80 rounded-full bg-theme-surface-elevated/15 blur-3xl"
-        aria-hidden="true"
-      />
-
-      {/* Elegant inner frame over the photograph */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.97 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, ease: EASE }}
-        className="pointer-events-none absolute inset-4 rounded-4xl border border-theme-accent/35 shadow-[inset_0_1px_0_rgba(255,255,255,0.18)] sm:inset-7 md:inset-9"
-        aria-hidden="true"
-      />
+      
 
       <motion.div
         initial={{ opacity: 0, y: 26, scale: 0.97 }}
@@ -79,7 +58,14 @@ export default function Hero() {
           />
 
           <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-theme-accent">
-            {guest.displayName === "Tamu Undangan" ? "Kepada Yth. " : "Turut mengundang "}<b>{guest.displayName}</b>
+            {loading ? (
+              <span>Memuat Undangan...</span>
+            ): (
+              <>  
+                {guest.displayName === "Tamu Undangan" ? "Kepada Yth. " : "Turut mengundang "}
+                <b>{ guest.displayName ? guest.displayName : guest.displayGroup }</b>
+              </>
+            )}
           </p>
         </motion.div>
 
@@ -89,7 +75,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="mb-5 font-serif text-sm italic tracking-wide text-theme-surface-elevated"
         >
-          {guest.greeting}
+          {guest.greetings}
         </motion.p>
 
         <motion.h1

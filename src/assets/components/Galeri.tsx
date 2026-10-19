@@ -24,7 +24,7 @@ export default function GallerySection() {
       <div className="relative mx-auto mt-1 max-w-6xl">
         <Reveal direction="up" duration={0.8}>
           <Heading
-            // isDark={true}
+            isDark={false}
             eyebrow="Album Kenangan"
             title="Potongan Perjalanan Kami"
             description="Delapan bingkai kecil yang menyimpan tawa, perjalanan, dan langkah-langkah sederhana menuju hari bahagia kami."
@@ -86,7 +86,7 @@ export default function GallerySection() {
         </div>
 
         <Reveal direction="fade" delay={0.2}>
-          <div className="mx-auto m-5 flex max-w-md items-center gap-4 text-theme-text">
+          <div className="mx-auto m-5 flex max-w-md items-center gap-4 text-theme-primary-dark">
             <span className="h-px flex-1 bg-current opacity-35" />
             <p className="font-serif text-sm italic ">
               Delapan foto, satu cerita yang terus bertumbuh

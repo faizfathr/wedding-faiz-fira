@@ -24,7 +24,7 @@ import {
 import useGuest from "../hooks/useGuests";
 
 const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbzSNTi-PUC9GidEX9Jy33dX524t8GvVIm_cvk0AshgL6lcWY4Iceghw1po6pJJaKJykZQ/exec";
+  "https://script.google.com/macros/s/AKfycbytxJvz-K_Bjgu6h-M5AEz2_QVBpXqI-9zPfVa3XeU2hF6sUJYGrdWLmxfqO9eX7dxVYg/exec";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -409,47 +409,135 @@ export default function RSVPSection() {
     setSelectedMessage,
   ] = useState<RSVPEntry | null>(null);
 
-  const guest = useGuest();
-  
-  useEffect(() => {
-    if (
-      !GOOGLE_SCRIPT_URL.startsWith(
-        "https://script.google.com/",
-      )
-    ) {
-      return;
-    }
+  const {
+    guest,
+    loading,
+    found,
+  } = useGuest();
 
-    fetch(GOOGLE_SCRIPT_URL)
-      .then((response) => {
+  // Mengisi nama dan grup otomatis dari tautan undangan
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function loadMessages(): Promise<void> {
+      try {
+        const url =
+          `${GOOGLE_SCRIPT_URL}?mode=rsvp`;
+
+        const response = await fetch(url, {
+          method: "GET",
+          signal: controller.signal,
+          cache: "no-store",
+        });
+
+        const responseText =
+          await response.text();
+
         if (!response.ok) {
           throw new Error(
             `Could not load messages: ${response.status}`,
           );
         }
 
-        return response.json();
-      })
-      .then((data: unknown) => {
-        if (
-          Array.isArray(data) &&
-          data.length > 0
-        ) {
-          setMessages(
-            (data as RSVPEntry[])
-              .slice()
-              .reverse(),
+        let data: unknown;
+
+        try {
+          data = JSON.parse(responseText);
+        } catch {
+          throw new Error(
+            `Apps Script returned invalid JSON: ${responseText.slice(0, 200)}`,
           );
         }
-      })
-      .catch((error: unknown) => {
+
+        if (!Array.isArray(data)) {
+          console.error(
+            "RSVP response is not an array:",
+            data,
+          );
+
+          throw new Error(
+            "RSVP response must be an array.",
+          );
+        }
+
+        const normalizedMessages: RSVPEntry[] =
+          data
+            .map((item: Partial<RSVPEntry>) => ({
+              id:
+                item.id ||
+                crypto.randomUUID(),
+
+              name:
+                item.name ||
+                "Tamu",
+
+              group:
+                item.group ||
+                "Tamu Undangan",
+
+              attendance:
+                item.attendance ||
+                "Masih tentatif",
+
+              guests:
+                Number(item.guests) || 1,
+
+              message:
+                item.message ||
+                "",
+
+              createdAt:
+                item.createdAt ||
+                new Date().toISOString(),
+            }))
+            .filter(
+              (item) =>
+                item.name.trim() !== "" &&
+                item.message.trim() !== "",
+            );
+
+        setMessages(normalizedMessages);
+      } catch (error) {
+        if (
+          error instanceof DOMException &&
+          error.name === "AbortError"
+        ) {
+          return;
+        }
+
         console.error(
           "Could not load RSVP messages:",
           error,
         );
-      });
+      }
+    }
+
+    void loadMessages();
+
+    return () => {
+      controller.abort();
+    };
   }, []);
 
+  useEffect(() => {
+    if (loading || !found) return;
+
+    const guestName =
+      guest.displayName?.trim() ?? "";
+
+    if (!guestName) return;
+
+    setForm((current) => ({
+      ...current,
+      name: guestName,
+    }));
+  }, [
+    loading,
+    found,
+    guest.displayName,
+  ]);
+
+  // Mengunci scroll dan menangani tombol Escape ketika modal terbuka
   useEffect(() => {
     if (!selectedMessage) return;
 
@@ -494,7 +582,7 @@ export default function RSVPSection() {
     const newEntry: RSVPEntry = {
       id: crypto.randomUUID(),
       ...form,
-      group: guest.displayName,
+      group: guest.displayGroup,
       createdAt: new Date().toISOString(),
     };
 
@@ -509,23 +597,24 @@ export default function RSVPSection() {
         );
       }
 
-      const response = await fetch(
-        GOOGLE_SCRIPT_URL,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type":
-              "text/plain;charset=utf-8",
-          },
-          body: JSON.stringify(newEntry),
+      const response = await fetch(`${GOOGLE_SCRIPT_URL}?mode=rsvp`, {
+        method: "POST",
+        headers: {
+          "Content-Type":
+            "text/plain;charset=utf-8",
         },
-      );
+        body: JSON.stringify(newEntry),
+      },
+      ).then((response) => {
+        if (!response.ok) {
+          throw new Error(
+            `Request failed with status ${response.status}`,
+          );
+        }
+        return response;
+      })
+        ;
 
-      if (!response.ok) {
-        throw new Error(
-          `Request failed with status ${response.status}`,
-        );
-      }
 
       const result =
         (await response.json()) as RSVPResponse;
@@ -613,7 +702,7 @@ export default function RSVPSection() {
                 <div className="relative">
                   <input
                     type="text"
-                    value={guest.displayName}
+                    value={guest.displayGroup}
                     readOnly
                     aria-readonly="true"
                     tabIndex={-1}
@@ -750,7 +839,7 @@ export default function RSVPSection() {
                     opacity: 0,
                     height: 0,
                   }}
-                  className="mt-5 flex items-center gap-3 bg-theme-accent p-4 text-sm text-theme-primary-dark"
+                  className="mt-5 flex items-center gap-3 bg-green-300 p-4 text-sm text-theme-primary-dark"
                 >
                   <CheckCircle2 size={20} />
                   Pesan tersimpan dan ucapan

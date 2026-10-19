@@ -12,7 +12,7 @@ createRoot(document.getElementById('root')!).render(
           element={<App />}
         />
 
-        <Route path="/:guestSlug"
+        <Route path="/:groupSlug"
           element={<App />}
         />
       </Routes>
