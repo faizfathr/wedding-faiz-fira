@@ -364,15 +364,16 @@ export default function GiftSection() {
   return (
     <section
       id="gift"
-      className="relative  overflow-hidden bg-theme-surface-elevated p-5"
+      className="relative overflow-hidden bg-theme-surface-elevated p-5"
     >
       <div className="pointer-events-none absolute -right-14 top-10 h-48 w-48 rotate-45 border border-theme-primary/10" />
-
-      <Heading
-        eyebrow="Tanda kasih"
-        title="Hadiah Pernikahan"
-        description="Doa dan kehadiran Anda adalah hadiah terindah. Apabila ingin berbagi tanda kasih, Anda dapat menggunakan informasi berikut."
-      />
+      <div className="flex flex-col justify-center items-center">
+        <Heading
+          eyebrow="Tanda kasih"
+          title="Hadiah Pernikahan"
+          description="Doa dan kehadiran Anda adalah hadiah terindah. Apabila ingin berbagi tanda kasih, Anda dapat menggunakan informasi berikut."
+        />
+      </div>
 
       {/* Bank accounts */}
       <StaggerReveal className="mx-auto mt-10 grid max-w-4xl gap-5 md:grid-cols-2">

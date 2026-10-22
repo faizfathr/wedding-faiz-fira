@@ -78,18 +78,19 @@ export default function Events() {
   return (
     <section
       id="events"
-      className="relative flex justify-content items-center text-center flex-col overflow-hidden bg-theme-surface-elevated px-5 py-5"
+      className="relative overflow-hidden bg-theme-surface-elevated px-5 py-5"
     >
       <KalimantanBaratOrnament className="-right-6 top-12 h-48 w-48" />
-
-      <Heading
-        eyebrow="Simpan tanggalnya"
-        title="Rangkaian Acara"
-        description="Rangkaian acara di Kalimantan Barat dan Sulawesi Barat."
-      />
+      <div className="flex justify-center items-center">
+        <Heading
+          eyebrow="Simpan tanggalnya"
+          title="Rangkaian Acara"
+          description="Rangkaian acara di Kalimantan Barat dan Sulawesi Barat."
+        />
+      </div>
 
       <Reveal direction="up" duration={0.9}>
-        <div className="relative max-w-5xl">
+        <div className="relative  w-full">
           {/* Desktop and tablet navigation */}
           <button
             type="button"

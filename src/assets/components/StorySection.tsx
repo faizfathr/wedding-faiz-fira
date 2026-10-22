@@ -9,7 +9,7 @@ export default function StorySection() {
   return (
     <section
       id="story"
-      className="relative flex justify-content items-center text-center flex-col overflow-hidden bg-theme-surface px-5 py-5"
+      className="relative  overflow-hidden bg-theme-surface px-5 py-5"
     >
       {/* Subtle decorative background */}
       <div
@@ -23,11 +23,13 @@ export default function StorySection() {
 
 
       {/* Existing section title appears after memories */}
-      <Heading
-        eyebrow="Perjalanan kami"
-        title="Cerita Cinta"
-        description="Setiap pertemuan, perjalanan, dan keputusan membawa kami semakin dekat menuju hari bahagia ini."
-      />
+      <div className="flex justify-center text-center">
+        <Heading
+          eyebrow="Perjalanan kami"
+          title="Cerita Cinta"
+          description="Setiap pertemuan, perjalanan, dan keputusan membawa kami semakin dekat menuju hari bahagia ini."
+        />
+      </div>
 
       {/* Story timeline */}
       <div className="relative mx-auto mb-5 max-w-5xl pt-2 text-center">

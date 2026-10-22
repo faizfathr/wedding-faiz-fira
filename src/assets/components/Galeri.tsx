@@ -21,14 +21,16 @@ export default function GallerySection() {
               transition={{ duration: 1.6, ease: EASE }}
               className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center grayscale-10"
             />
-      <div className="relative flex justify-content items-center text-center flex-col mx-auto mt-1 max-w-6xl">
+      <div className="relative mx-auto mt-1 max-w-6xl">
         <Reveal direction="up" duration={0.8}>
-          <Heading
-            isDark={false}
-            eyebrow="Album Kenangan"
-            title="Potongan Perjalanan Kami"
-            description="Delapan bingkai kecil yang menyimpan tawa, perjalanan, dan langkah-langkah sederhana menuju hari bahagia kami."
-          />
+          <div className="flex flex-col items-center text-center">
+            <Heading
+              isDark={false}
+              eyebrow="Album Kenangan"
+              title="Potongan Perjalanan Kami"
+              description="Delapan bingkai kecil yang menyimpan tawa, perjalanan, dan langkah-langkah sederhana menuju hari bahagia kami."
+            />
+          </div>
         </Reveal>
 
         <div className="grid grid-cols-2 gap-4 sm:gap-5 md:auto-rows-[62px] md:grid-cols-12 md:gap-6">
