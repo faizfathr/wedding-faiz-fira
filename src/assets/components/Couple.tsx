@@ -9,7 +9,7 @@ export default function Couple() {
   return (
     <section
       id="couple"
-      className="relative overflow-hidden bg-theme-surface p-5"
+      className="relative flex justify-content items-center text-center flex-col overflow-hidden bg-theme-surface p-5"
     >
       <SulawesiBaratOrnament className="-left-20 top-10 h-52 w-80" />
       <Heading

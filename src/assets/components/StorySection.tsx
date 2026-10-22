@@ -9,7 +9,7 @@ export default function StorySection() {
   return (
     <section
       id="story"
-      className="relative overflow-hidden bg-theme-surface px-5 py-5"
+      className="relative flex justify-content items-center text-center flex-col overflow-hidden bg-theme-surface px-5 py-5"
     >
       {/* Subtle decorative background */}
       <div

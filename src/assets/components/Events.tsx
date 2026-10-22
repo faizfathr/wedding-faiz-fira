@@ -78,7 +78,7 @@ export default function Events() {
   return (
     <section
       id="events"
-      className="relative overflow-hidden bg-theme-surface-elevated px-5 py-5"
+      className="relative flex justify-content items-center text-center flex-col overflow-hidden bg-theme-surface-elevated px-5 py-5"
     >
       <KalimantanBaratOrnament className="-right-6 top-12 h-48 w-48" />
 
@@ -243,8 +243,8 @@ export default function Events() {
                   onClick={() => scrollToCard(index)}
                   aria-label={`Lihat ${event.title}`}
                   className={`h-2 rounded-full transition-all duration-300 ${activeIndex === index
-                      ? "w-8 bg-theme-primary"
-                      : "w-2 bg-theme-border hover:bg-theme-primary/40"
+                    ? "w-8 bg-theme-primary"
+                    : "w-2 bg-theme-border hover:bg-theme-primary/40"
                     }`}
                 />
               ))}
@@ -252,7 +252,7 @@ export default function Events() {
           </div>
         </div>
       </Reveal>
-      
+
       <Reveal direction="up" duration={0.9} delay={0.15}>
         <Countdown />
       </Reveal>

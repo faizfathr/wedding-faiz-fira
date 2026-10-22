@@ -364,7 +364,7 @@ export default function GiftSection() {
   return (
     <section
       id="gift"
-      className="relative overflow-hidden bg-theme-surface-elevated p-5"
+      className="relative  overflow-hidden bg-theme-surface-elevated p-5"
     >
       <div className="pointer-events-none absolute -right-14 top-10 h-48 w-48 rotate-45 border border-theme-primary/10" />
 

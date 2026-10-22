@@ -26,4 +26,19 @@ function CopyButton({ value, isDark=false, content }: { value: string; isDark?: 
   );
 }
 
-export { scrollToSection, CopyButton };
+function truncateWords(
+  text: string,
+  maximumWords = 20,
+): string {
+  const words = text.trim().split(/\s+/);
+
+  if (words.length <= maximumWords) {
+    return text;
+  }
+
+  return `${words
+    .slice(0, maximumWords)
+    .join(" ")}...`;
+}
+
+export { scrollToSection, CopyButton, truncateWords };

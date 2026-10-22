@@ -21,7 +21,7 @@ export default function GallerySection() {
               transition={{ duration: 1.6, ease: EASE }}
               className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center grayscale-10"
             />
-      <div className="relative mx-auto mt-1 max-w-6xl">
+      <div className="relative flex justify-content items-center text-center flex-col mx-auto mt-1 max-w-6xl">
         <Reveal direction="up" duration={0.8}>
           <Heading
             isDark={false}

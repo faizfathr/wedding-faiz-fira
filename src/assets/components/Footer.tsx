@@ -4,7 +4,7 @@ import Heading from "./Heading";
 
 export default function Footer() {
   return (
-    <footer className=" bg-theme-primary p-5 text-center text-theme-page">
+    <footer className="flex flex-col items-center justify-center bg-theme-primary p-5 text-center text-theme-page">
       <KalimantanBaratOrnament className="-left-8 top-2 h-40 w-40 opacity-[0.05]" />
       <Heading 
         isDark={true}

@@ -4,6 +4,7 @@ import { scrollToSection } from "./Utils";
 import { CulturalDivider } from "./Ornament";
 import UseGuest from "../hooks/useGuests";
 import { WEDDING, EASE } from "../data";
+import TypeWriterText from "./animations/TypeWriterText";
 
 const HERO_BACKGROUND = "/images/main-bg.jpeg";
 
@@ -37,7 +38,7 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      
+
 
       <motion.div
         initial={{ opacity: 0, y: 26, scale: 0.97 }}
@@ -60,22 +61,55 @@ export default function Hero() {
           <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-theme-accent">
             {loading ? (
               <span>Memuat Undangan...</span>
-            ): (
-              <>  
+            ) : (
+              <>
                 {guest.displayName === "Tamu Undangan" ? "Kepada Yth. " : "Turut mengundang "}
-                <b>{ guest.displayName ? guest.displayName : guest.displayGroup }</b>
+                <b>{guest.displayName ? guest.displayName : guest.displayGroup}</b>
               </>
             )}
           </p>
         </motion.div>
 
         <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="mb-5 font-serif text-sm italic tracking-wide text-theme-surface-elevated"
+          initial={{
+            opacity: 0,
+            y: 8,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.7,
+            delay: 0.3,
+            ease: EASE,
+          }}
+          className="mx-auto mb-5 min-h-[3rem] max-w-xl font-serif text-sm italic leading-6 tracking-wide text-theme-surface-elevated sm:min-h-6"
         >
-          {guest.greetings}
+          {loading ? (
+            <motion.span
+              animate={{
+                opacity: [0.4, 1, 0.4],
+              }}
+              transition={{
+                duration: 1.4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              Memuat undangan...
+            </motion.span>
+          ) : (
+            <TypeWriterText
+         
+            text={
+                guest.greetings?.trim() ||
+                "Dengan penuh kasih, kami mengundang Anda untuk hadir pada hari bahagia kami."
+              }
+              speed={32}
+              startDelay={300}
+            />
+          )}
         </motion.p>
 
         <motion.h1
@@ -99,7 +133,6 @@ export default function Hero() {
         <div className="text-theme-accent">
           <CulturalDivider />
         </div>
-
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
