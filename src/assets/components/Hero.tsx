@@ -46,29 +46,7 @@ export default function Hero() {
         transition={{ duration: 0.95, ease: EASE }}
         className="relative z-10 mx-auto w-full max-w-3xl"
       >
-        <motion.div
-          initial={{ opacity: 0, y: -12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.15, ease: EASE }}
-          className="mb-7 inline-flex items-center gap-2 rounded-full border border-theme-accent/35 bg-black/25 px-4 py-2 shadow-[0_10px_35px_rgba(0,0,0,0.2)] backdrop-blur-xl"
-        >
-          <Sparkles
-            className="text-theme-accent"
-            size={14}
-            strokeWidth={1.4}
-          />
-
-          <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-theme-accent">
-            {loading ? (
-              <span>Memuat Undangan...</span>
-            ) : (
-              <>
-                {guest.displayName === "Tamu Undangan" ? "Kepada Yth. " : "Turut mengundang "}
-                <b>{guest.displayName ? guest.displayName : guest.displayGroup}</b>
-              </>
-            )}
-          </p>
-        </motion.div>
+        
 
         <motion.p
           initial={{
@@ -143,6 +121,30 @@ export default function Hero() {
             {WEDDING.displayDate}
           </p>
         </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.15, ease: EASE }}
+          className="mb-7 flex items-center w-fit mx-auto mt-4 gap-2 rounded-full border border-theme-accent/35 bg-black/25 px-4 py-2 shadow-[0_10px_35px_rgba(0,0,0,0.2)] backdrop-blur-xl"
+        >
+          <Sparkles
+            className="text-theme-accent"
+            size={28}
+            strokeWidth={1.4}
+          />
+
+          <p className="font-semibold uppercase tracking-[0.3em] text-theme-accent">
+            {loading ? (
+              <span>Memuat Undangan...</span>
+            ) : (
+              <div>
+                <span className="text-[10px]">{guest.displayName === "Tamu Undangan" ? "Kepada Yth. " : "Kepada Bapak/Ibu/Saudara/I "}</span>
+                <b className="text-sm">{guest.displayName ? guest.displayName : guest.displayGroup}</b>
+              </div>
+            )}
+          </p>
+        </motion.div>
 
         <motion.button
           type="button"
@@ -152,7 +154,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.85, ease: EASE }}
           whileHover={{ y: -3 }}
           whileTap={{ scale: 0.96 }}
-          className="group mt-9 inline-flex items-center gap-3 rounded-full border border-theme-accent/50 bg-theme-primary/90 px-6 py-3.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-theme-page shadow-[0_14px_38px_rgba(0,0,0,0.28)] backdrop-blur-md transition-colors hover:bg-theme-primary"
+          className="group mt-4 inline-flex items-center gap-3 rounded-full border border-theme-accent/50 bg-theme-primary/90 px-6 py-3.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-theme-page shadow-[0_14px_38px_rgba(0,0,0,0.28)] backdrop-blur-md transition-colors hover:bg-theme-primary"
         >
           Lihat undangan
 

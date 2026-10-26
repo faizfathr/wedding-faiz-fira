@@ -81,7 +81,7 @@ const EVENTS: EventItem[] = [
     region: "Kalimantan Barat",
     title: "Resepsi",
     time: "11.00 – 16.00 WIB",
-    description: "Ramahi tamah dan jamuan bersama para tamu.",
+    description: "Resepsi, ramah tamah dan jamuan bersama para tamu.",
     venue: "Rumah Adat Melayu",
     date: "2026-11-28T11:00:00+07:00",
     address: "Jl. Alianyang, Melayu, Kec. Singkawang Barat, Kota Singkawang",

@@ -21,7 +21,7 @@ export default function PersonCard({
     <motion.article whileHover={{ y: -5 }} className="text-center">
       <div className="mx-auto mb-2 h-36 w-24 overflow-hidden rounded-full border border-theme-border bg-theme-surface-elevated shadow-[0_12px_35px_rgba(125,90,90,0.12)]">
         {photoUrl ? (
-          <img src={photoUrl} alt={photoAlt} className="h-full w-full object-scale-down object-top" />
+          <img src={photoUrl} alt={photoAlt} className="h-full w-full object-cover" />
         ) : (
           <div className="flex h-full w-full items-center justify-center">
             <span className="font-serif text-6xl text-theme-primary">

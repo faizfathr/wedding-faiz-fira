@@ -21,7 +21,7 @@ export default function Couple() {
       <div className="mx-auto grid max-w-4xl gap-12 md:grid-cols-[1fr_auto_1fr] md:items-center">
         <Reveal direction="right" duration={0.9}>
           <PersonCard
-            initials="A"
+            initials="F"
             name={WEDDING.groom.fullName}
             parents={WEDDING.groom.parents}
             origin={WEDDING.groom.origin}
